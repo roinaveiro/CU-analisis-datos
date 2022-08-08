@@ -203,8 +203,6 @@ $$\\[1in]$$
 knitr::include_graphics("img/covid.png")
 ```
 
----
-## Recursos Interesantes
 
 ---
 ## Este curso
@@ -292,6 +290,16 @@ knitr::include_graphics("img/r-rstudio.png")
 
 ---
 
+## Recursos Interesantes
+
+* [Análisis de datos acerca de la evolución de las tendencias musicales](https://towardsdatascience.com/billboard-hot-100-analytics-using-data-to-understand-the-shift-in-popular-music-in-the-last-60-ac3919d39b49)
+
+* [A year as told by FitBit](https://livefreeordichotomize.com/2017/12/27/a-year-as-told-by-fitbit/)
+
+* [Charla TED](https://www.youtube.com/watch?v=hVimVzgtD6w)
+
+---
+
 ## Bibliografía
 
 * [Hands-On Programming with R](https://rstudio-education.github.io/hopr/), Grolemund (2014)
@@ -302,4 +310,3 @@ knitr::include_graphics("img/r-rstudio.png")
 
 * [Data Science Specialization](https://github.com/DataScienceSpecialization/courses), Johns Hopkins University, Coursera
 
----
