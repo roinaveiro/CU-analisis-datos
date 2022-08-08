@@ -1,0 +1,305 @@
+---
+title: ""
+author: ""
+date: ""
+output: 
+   xaringan::moon_reader:
+    css: "stats_slides.css"
+    lib_dir: libs
+    seal: false
+    includes:
+      after_body: insert-logo.html
+    nature: 
+      highlightLines: true
+      highlightStyle: github
+      countIncrementalSlides: false
+      slideNumberFormat: "%current%"  
+---
+
+
+
+```{r packages_setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(NHANES)
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+knitr::opts_chunk$set(fig.width=8, fig.height=6) 
+```
+
+class: center, middle, inverse, title-slide
+
+<div class="title-logo"></div>
+
+# Análisis y Explotación de la Información
+
+## Tema 0 - Introducción
+
+
+
+---
+
+## ¿Qué es la Ciencia de Datos?
+
+*"Data science is a concept to unify statistics, data analysis, machine learning and their related methods in order to **understand and analyze** actual phenomena with **data**. It employs techniques and theories drawn from many fields within the context of <font class="vocab">mathematics, statistics, information science, and computer science</font>."*
+
+.pull-right[
+[-Wikipedia](https://en.wikipedia.org/wiki/Data_science)
+]
+
+---
+
+## ¿Qué son los Datos?
+
+*"A collection of discrete units of information that in their most basic forms convey quantity, quality, fact, statistics, or other basic units of meaning."*
+
+.pull-right[
+[-Wikipedia](https://en.wikipedia.org/wiki/Data)
+]
+
+--
+
+<br>
+<font class="vocab">¡Definición bastante vaga!</font>
+
+---
+
+## Tipos de Datos
+
+* Cualquier unidad de información es un dato
+
+* Una distinción importante
+
+  * Datos estructurados
+  * Datos no estructurados
+  
+---
+
+## Datos Estructurados
+
+Datos tabulares
+
+<img class=center src="img/excel.png" height=400 />
+
+---
+
+## Datos No Estructurados
+
+Todo lo demás
+
+* Imágenes
+
+* Audio
+
+* Vídeo
+
+* Texto
+
+---
+
+
+## Tipos de Análisis de Datos
+
+* Descriptivo
+
+* Exploratorio
+
+* Inferencial
+
+* Predictivo
+
+* Causal
+
+---
+
+## Análisis Descriptivo
+
+**Objetivo**: resumir la información presente en un conjunto de datos
+
+  * Primer tipo de análisis de datos a realizar
+  * En general, las descripciones no se pueden generalizar sin la ayuda de modelos estadísticos
+  
+---
+
+## Análisis Descriptivo
+
+La base de datos `mtcars` de R contiene información extraída de la *1974 Motor Trend US magazine* acerca de 10 aspectos de diseño de rendimiento de 32 vehículos. La variable `am` se refiere a la transmisión (0 = automática, 1 = manual)
+
+```{r,fig.align='center',out.extra='angle=90', echo=FALSE}
+
+library(dplyr)
+library(explore)
+mtcars %>% explore(am)
+
+```
+
+---
+
+## Análisis Exploratorio
+
+**Objetivo**: descubrir relaciones entre características de los datos 
+
+  * Motiva preguntas de investigación
+
+---
+
+## Análisis Exploratorio
+
+La variable `wt` se refiere al peso del vehículo y `mpg` a las millas por galón
+
+```{r,fig.align='center',out.extra='angle=90', echo=FALSE}
+
+library(dplyr)
+library(explore)
+mtcars %>% explore(wt, mpg)
+
+```
+
+---
+
+## Análisis Inferencial
+
+**Objetivo**: usar una muestra pequeña de datos acerca de una población para extraer alguna información acerca de la misma.
+
+  * Aquí entra en juego la **estadística**
+  
+---
+
+## Análisis Inferencial
+
+```{r, echo=FALSE, out.width = '100%',  fig.align='center'}
+knitr::include_graphics("img/pollution.png")
+```
+
+
+---
+## Análisis Predictivo
+
+**Objetivo**: utilizar datos sobre un conjunto de objetos para predecir el valor de una variable en un objeto nunca antes visto
+
+  * X predice Y no implica que X sea causa de Y
+
+---
+## Análisis Predictivo
+
+```{r pressure, echo=FALSE, out.width = '80%',  fig.align='center'}
+knitr::include_graphics("img/soy.svg")
+```
+
+[Fuente](https://www.r-bloggers.com/2020/11/time-series-demand-forecasting/)
+
+---
+## Análisis Causal
+
+**Objetivo**: encontrar qué le sucede a una variable cuando se modifica el valor de otra
+
+  * Las relaciones causales usualmente identifican efectos medios, no efectos individuales
+
+---
+## Análisis Causal
+
+
+$$\\[1in]$$
+
+```{r, echo=FALSE, out.width = '100%',  fig.align='center'}
+knitr::include_graphics("img/covid.png")
+```
+
+---
+## Recursos Interesantes
+
+---
+## Este curso
+
+Adentrarnos en la ciencia de datos a través de R
+
+* Datos Tabulares
+
+* Análisis Descriptivo, Exploratorio, Inferencial
+
+
+$$\\[1cm]$$
+
+```{r, echo=FALSE, out.width = '100%',  fig.align='center'}
+knitr::include_graphics("img/data-science-explore.png")
+```
+
+---
+## Tema 1 - Programación  en R
+
+- Stuff
+
+
+---
+## Tema 2 - Importar Datos 
+
+- Stuff
+
+---
+
+## Tema 3 - Organizar Datos 
+
+- Stuff
+
+---
+
+## Tema 4 - Transformar Datos 
+
+- Stuff
+
+---
+
+## Tema 5 - Visualizar Datos 
+
+- Stuff
+
+---
+
+## Tema 6 - EDA
+
+- Stuff
+
+---
+
+## Tema 7 - Modelización de Datos 
+
+- Stuff
+
+---
+
+## R y RStudio
+
+
+### ¿Qué es R/RStudio?
+
+- R es un lenguaje de programación especializacido en estadística
+- RStudio es una interfaz para programar en R
+
+```{r, echo=FALSE, out.width = '80%',  fig.align='center'}
+knitr::include_graphics("img/r-rstudio.png")
+```
+
+
+[Instalación de R y RStudio](https://rstudio-education.github.io/hopr/starting.html)
+
+---
+
+## Evaluación
+
+* 20%
+
+* 20%
+
+* 60%
+
+---
+
+## Bibliografía
+
+* [Hands-On Programming with R](https://rstudio-education.github.io/hopr/), Grolemund (2014)
+
+* [R for Data Science](https://r4ds.had.co.nz/), Wickham and Grolemund (2016)
+
+* [Data Visualization, A practical introduction](https://socviz.co/), Healy (2018)
+
+* [Data Science Specialization](https://github.com/DataScienceSpecialization/courses), Johns Hopkins University, Coursera
+
+---
