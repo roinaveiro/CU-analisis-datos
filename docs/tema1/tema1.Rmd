@@ -298,7 +298,6 @@ knitr::include_graphics("img/r-rstudio.png")
 
 * [Charla TED](https://www.youtube.com/watch?v=hVimVzgtD6w)
 
-* [RMarkDown](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 ---
 
 ## Bibliografía
