@@ -188,8 +188,7 @@ ls()
 ```
 
 ```
-## [1] "a"          "b"          "c"          "d"         
-## [5] "e"          "gen"        "gen2_1_100" "nn"
+## [1] "a" "b" "c"
 ```
 
 ---
@@ -240,6 +239,45 @@ d * e
 ¡Pruébalo!
 
 ---
+
+## La función `c()`
+
+Esta función nos ayuda a combinar objetos.
+Por ejemplo, podemos crear un vector de enteros de la siguiente forma
+
+
+```r
+a &lt;- c(1,2,3)
+a
+```
+
+```
+## [1] 1 2 3
+```
+
+También podemos añadir elementos a un vector existente
+
+```r
+a &lt;- c(a, 4,5)
+a
+```
+
+```
+## [1] 1 2 3 4 5
+```
+
+No solo podemos crear vectores de números!
+
+
+```r
+a &lt;- c('adiós', 'hola')
+a
+```
+
+```
+## [1] "adiós" "hola"
+```
+---
 ## Funciones
 
 R tiene muchas funciones predefinidas 
@@ -262,7 +300,10 @@ round(mean(1:10))
 ## [1] 6
 ```
 
-Algunas funciones tienen varios argumentos. Cada uno tiene un nombre
+---
+## Funciones
+
+Algunas funciones tienen múltiples argumentos. Cada uno tiene un nombre
 
 
 ```r
@@ -280,7 +321,7 @@ sample(1:10, 1)
 ```
 
 ```
-## [1] 4
+## [1] 1
 ```
 
 ---
@@ -324,6 +365,9 @@ gen2_1_100 &lt;- function(){
 }
 ```
 
+---
+## Definiendo funciones propias
+
 * La probamos
 
 
@@ -332,7 +376,7 @@ a &lt;- gen2_1_100()
 ```
 
 ```
-## [1] 24 89
+## [1] 62 80
 ```
 
 ```r
@@ -340,7 +384,7 @@ a
 ```
 
 ```
-## [1] 113
+## [1] 142
 ```
 
 ---
@@ -367,11 +411,11 @@ gen2_1_100()
 ```
 
 ```
-## [1] 81 72
+## [1] 43 33
 ```
 
 ```
-## [1] 153
+## [1] 76
 ```
 
 ---
@@ -384,11 +428,11 @@ gen2_1_100(10)
 ```
 
 ```
-##  [1] 53 15 25 67 94 29 86 61 23 13
+##  [1] 17  7 92 38  2 90 73 57  6 70
 ```
 
 ```
-## [1] 466
+## [1] 452
 ```
 
 ---
@@ -403,27 +447,921 @@ Pista: puedes usar la función `hist()`.
 ¿Qué observas?
 
 ---
-## Instalar paquetes
+## Paquetes y ayudas
 
-## Recursos Interesantes
+* **Importante**: el primer paso en la creación (de cualquier cosa) consiste en comprobar si alguien ya la ha creado...
 
-* [Análisis de datos acerca de la evolución de las tendencias musicales](https://towardsdatascience.com/billboard-hot-100-analytics-using-data-to-understand-the-shift-in-popular-music-in-the-last-60-ac3919d39b49)
+* ...lo mismo para funciones en R.
 
-* [A year as told by FitBit](https://livefreeordichotomize.com/2017/12/27/a-year-as-told-by-fitbit/)
+* Muchas funciones de R han sido creadas y encapsuladas en **paquetes**.
 
-* [Charla TED](https://www.youtube.com/watch?v=hVimVzgtD6w)
+* [Aquí](https://rstudio-education.github.io/hopr/packages2.html) podéis ver cómo instalar y actualizar paquetes en R.
+
+---
+## Paquetes y ayudas
+
+* Ejemplo, instalar `tidyverse`
+
+
+```r
+install.packages("tidyverse")
+```
+
+* Para usar paquetes en R hay que cargarlos
+
+
+```r
+library("tidyverse")
+```
+
+---
+## Paquetes y ayudas
+
+* Existen infinidad de funciones en R y sus paquetes...
+
+* ...memorizar todo es complicado (y absurdo).
+
+* Las funciones cuentan con ayudas, que se invocan de la siguiente manera
+
+
+```r
+?sample
+```
+
+---
+## Paquetes y ayudas
+
+* La mejor fuente de ayuda es internet
+
+* Por ejemplo, [Stack Overflow](https://stackoverflow.co/)
+
+* Otro recurso interesante es [community.rstudio.com](https://community.rstudio.com)
+
+---
+## Ejercicio 2
+
+Utiliza internet para conocer el funcionamiento de la función `replicate()` 
+Resuelve el Ejercicio 1 sin usar un bucle (si es que lo habías usado).
+
+---
+## Objetos de R
+
+Ahora aprenderemos a utilizar los siguientes objetos de R:
+
+---
+## 1. Vectores atómicos
+
+No son más que vectores de datos. Ya hemos visto cómo crearlos.
+
+
+```r
+a = c(1,2,3)
+
+# Comprueba si es vector
+is.vector(a)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+# Devuelve la longitud del vector
+length(a)
+```
+
+```
+## [1] 3
+```
+
+Cada vector sólo guarda un tipo de dato
+
+---
+## 1. Vectores atómicos
+### Tipos de datos - Doubles
+
+Los vectores tipo double almacenan números reales
+
+
+```r
+a = c(1.7,2,3.5)
+
+# Devuelve el tipo de vector
+typeof(a)
+```
+
+```
+## [1] "double"
+```
+
+---
+## 1. Vectores atómicos
+### Tipos de datos - Enteros
+
+Los vectores tipo entero almacenan números enteros
+
+
+```r
+a = c(1L,-2L,3L)
+
+# Devuelve el tipo de vector
+typeof(a)
+```
+
+```
+## [1] "integer"
+```
+---
+## 1. Vectores atómicos
+### Tipos de datos - Caracteres
+
+Los vectores tipo caracter (string) almacenan texto
+
+
+```r
+a = c("Hola", "Adiós")
+
+# Devuelve el tipo de vector
+typeof(a)
+```
+
+```
+## [1] "character"
+```
+
+OJO: ¿Qué está sucediendo?
+
+```r
+a = c(1,2,3,"Hola")
+a
+```
+
+```
+## [1] "1"    "2"    "3"    "Hola"
+```
+
+Este fenómeno se llama **coerción**. Es importante que leas sobre el mismo en
+[https://rstudio-education.github.io/hopr/r-objects.html#coercion](https://rstudio-education.github.io/hopr/r-objects.html#coercion).
+
+---
+## 1. Vectores atómicos
+### Tipos de datos - Lógicos
+Los vectores tipo lógico almacenan `TRUE` o `FALSE` (datos Booleanos).
+
+
+```r
+a = c(5&gt;4, 4&gt;5)
+typeof(a)
+```
+
+```
+## [1] "logical"
+```
+
+```r
+a
+```
+
+```
+## [1]  TRUE FALSE
+```
+
+---
+## 2. Atributos
+
+Son piezas de información que se pueden adjuntar a los objetos de R.
+
+
+```r
+a = 1:10
+attributes(a)
+```
+
+```
+## NULL
+```
+
+Algunos atributos importantes: nombres y dimensión
+
+---
+## 2. Atributos - Nombres
+
+```r
+a = 1:3
+# Asigno nombres al vector a
+names(a) &lt;- c("uno", "dos", "tres")
+names(a)
+```
+
+```
+## [1] "uno"  "dos"  "tres"
+```
+
+```r
+#Compruebo que se ha guardado el atributo
+attributes(a)
+```
+
+```
+## $names
+## [1] "uno"  "dos"  "tres"
+```
+
+---
+## Atributos - Dimensión
+
+```r
+a = 1:10
+# Asigno dimensión, esto convierte a en matriz
+
+dim(a) = c(2,5)
+
+#Compruebo la dimensión
+dim(a)
+```
+
+```
+## [1] 2 5
+```
+---
+## 3. Matrices
+Se utilizan para almacenar matrices bi-dimensionales
+
+
+```r
+m &lt;- matrix(1:10, nrow=2)
+m
+```
+
+```
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10
+```
+
+```r
+m &lt;- matrix(1:10, nrow=2, byrow=TRUE)
+m
+```
+
+```
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    2    3    4    5
+## [2,]    6    7    8    9   10
+```
+
+---
+## 4. Arrays
+Se utilizan para almacenar matrices n-dimensionales
+
+```r
+m &lt;- array(1:12, dim = c(2,2,3))
+m
+```
+
+```
+## , , 1
+## 
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4
+## 
+## , , 2
+## 
+##      [,1] [,2]
+## [1,]    5    7
+## [2,]    6    8
+## 
+## , , 3
+## 
+##      [,1] [,2]
+## [1,]    9   11
+## [2,]   10   12
+```
+
+---
+## 5. Clases
+
+Una clase es un objeto con uno o varios atributos asociados.
+La función ´class´ describe el tipo de clase correspondiente al objeto.
+
+
+```r
+m &lt;- array(1:12, dim = c(2,2,3))
+class(m)
+```
+
+```
+## [1] "array"
+```
+
+---
+## 5. Clases - Fechas y Horas
+
+```r
+hora &lt;- Sys.time()
+hora
+```
+
+```
+## [1] "2022-08-09 20:06:17 CEST"
+```
+
+```r
+typeof(hora)
+```
+
+```
+## [1] "double"
+```
+
+```r
+class(hora)
+```
+
+```
+## [1] "POSIXct" "POSIXt"
+```
+
+---
+## 5. Clases - Factores
+
+Se utilizan para almacenar variables categóricas, con un nivel de categorías fijo.
+
+
+```r
+fumador &lt;- factor( c("SI", "NO", "NO", "SI") )
+attributes(fumador)
+```
+
+```
+## $levels
+## [1] "NO" "SI"
+## 
+## $class
+## [1] "factor"
+```
+
+
+
+```r
+# Convertimos factor a caracter
+fumador &lt;- as.character(fumador)
+class(fumador)
+```
+
+```
+## [1] "character"
+```
+
+---
+## 6. Listas
+
+Hemos visto que los vectores atómicos agrupan valores individuales.
+Las listas almacenan objetos de R.
+
+```r
+milista &lt;- list(c("A", "B"), 1:10, Sys.time())
+milista
+```
+
+```
+## [[1]]
+## [1] "A" "B"
+## 
+## [[2]]
+##  [1]  1  2  3  4  5  6  7  8  9 10
+## 
+## [[3]]
+## [1] "2022-08-09 20:06:17 CEST"
+```
+
+---
+## 6. Data Frames
+Versión bi-dimensional de una lista. Cada columna del data frame puede contener tipos de datos diferentes.
+Un dataframe se crea especificando las columnas (que son vectores atómicos)
+
+
+```r
+df &lt;- data.frame(paciente = c("MARIANO", "IRENE", "INES"), fumador = c("SI", "NO", "SI"), edad = c(64, 32, 38))
+df
+```
+
+```
+##   paciente fumador edad
+## 1  MARIANO      SI   64
+## 2    IRENE      NO   32
+## 3     INES      SI   38
+```
+---
+## 6. Data Frames
+
+```r
+# Comprobamos la clase
+class(df)
+```
+
+```
+## [1] "data.frame"
+```
+
+```r
+# Resumimos la información
+str(df)
+```
+
+```
+## 'data.frame':	3 obs. of  3 variables:
+##  $ paciente: Factor w/ 3 levels "INES","IRENE",..: 3 2 1
+##  $ fumador : Factor w/ 2 levels "NO","SI": 2 1 2
+##  $ edad    : num  64 32 38
+```
+
+Podemos acceder al dataframe desde el *Environment*
+
+---
+## Seleccionar valores 
+
+En un dataframe
+
+
+```r
+# Selección con números enteros
+df[1,2]
+```
+
+```
+## [1] SI
+## Levels: NO SI
+```
+
+```r
+# Más de un elemento
+df[1:2, 2:3]
+```
+
+```
+##   fumador edad
+## 1      SI   64
+## 2      NO   32
+```
+
+---
+## Seleccionar valores 
+
+En un dataframe
+
+
+```r
+# Selección con enteros negativos
+df[-c(1,2),1:3]
+```
+
+```
+##   paciente fumador edad
+## 3     INES      SI   38
+```
+
+```r
+# Selección con espacios
+df[,-2]
+```
+
+```
+##   paciente edad
+## 1  MARIANO   64
+## 2    IRENE   32
+## 3     INES   38
+```
+
+```r
+# Selección con variables lógicas
+df[1,c(TRUE, TRUE, FALSE)]
+```
+
+```
+##   paciente fumador
+## 1  MARIANO      SI
+```
+
+---
+## Seleccionar valores 
+
+En un dataframe
+
+
+```r
+# Selección con nombres
+df[c(1,3), "fumador"]
+```
+
+```
+## [1] SI SI
+## Levels: NO SI
+```
+
+```r
+# Selección de columnas con $
+df$paciente
+```
+
+```
+## [1] MARIANO IRENE   INES   
+## Levels: INES IRENE MARIANO
+```
+
+---
+## Seleccionar valores 
+¡Con expresiones lógicas!
+
+
+```r
+# Seleccinar los fumadores
+df[df$fumador == "SI", ]
+```
+
+```
+##   paciente fumador edad
+## 1  MARIANO      SI   64
+## 3     INES      SI   38
+```
+
+```r
+# Seleccinar los menores de 33
+df[df$edad &lt; 33, ]
+```
+
+```
+##   paciente fumador edad
+## 2    IRENE      NO   32
+```
+
+---
+## Seleccionar valores 
+Se pueden combinar expresiones lógicas con operadores Booleanos
+
+```r
+exp1 &lt;- 5&gt;3
+exp2 &lt;- "A" != "A"
+exp3 &lt;- 3 %in% c(1,2,3)
+
+# AND
+exp1 &amp; exp2
+```
+
+```
+## [1] FALSE
+```
+
+```r
+# OR
+exp1 | exp2
+```
+
+```
+## [1] TRUE
+```
+
+```r
+# Negación
+!exp1
+```
+
+```
+## [1] FALSE
+```
+---
+## Seleccionar valores 
+Se pueden combinar expresiones lógicas con operadores Booleanos
+
+
+```r
+# Any
+any(exp1, exp2, exp3)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+# All
+all(exp1, exp2, exp3)
+```
+
+```
+## [1] FALSE
+```
+
+---
+## Seleccionar valores 
+Se pueden combinar expresiones lógicas con operadores Booleanos
+
+
+```r
+# Seleccionar los fumadores mayores de 60
+df[df$fumador == "SI" &amp; df$edad &lt; 60,]
+```
+
+```
+##   paciente fumador edad
+## 3     INES      SI   38
+```
+
+
+---
+## Seleccionar valores 
+En una lista
+
+
+```r
+milista &lt;- list(letras = c("A", "B"), numeros = 1:10, tiempo = Sys.time())
+
+milista[1]
+```
+
+```
+## $letras
+## [1] "A" "B"
+```
+
+```r
+milista[[1]]
+```
+
+```
+## [1] "A" "B"
+```
+
+```r
+milista["letras"]
+```
+
+```
+## $letras
+## [1] "A" "B"
+```
+
+```r
+milista[["letras"]]
+```
+
+```
+## [1] "A" "B"
+```
+
+---
+# Ejercicio 3
+
+La base de datos `mtcars` de R contiene información extraída de la *1974 Motor Trend US magazine* acerca de 10 aspectos de diseño de rendimiento de 32 vehículos. 
+Usando esta base de datos, calcula 
+
+**Pregunta 1.** La diferencia entre el consumo medio de los vehículos de transmisión automática y los de transmisión manual.
+
+**Pregunta 2.** La misma diferencia pero únicamente para vehículos de más de 3000 lbs.
+
+Pista: la ayuda ?mtcars te puede ser útil
+
+---
+## Modificar valores
+
+
+```r
+vec &lt;- 1:10
+
+# Modificar valores con enteros
+vec[3] &lt;- 300
+vec
+```
+
+```
+##  [1]   1   2 300   4   5   6   7   8   9  10
+```
+
+```r
+# Modificar valores con selección
+vec[c(1,4)] &lt;- c(100, 400)
+vec
+```
+
+```
+##  [1] 100   2 300 400   5   6   7   8   9  10
+```
+
+```r
+# Modificar valores con selección
+vec[c(5:6)] &lt;- vec[c(5:6)] + 100 
+vec
+```
+
+```
+##  [1] 100   2 300 400 105 106   7   8   9  10
+```
+
+---
+## Modificar valores
+
+
+```r
+# Añadimos variable a dataframe
+df$hipertenso &lt;- c("SI", "NO", "NO")
+df
+```
+
+```
+##   paciente fumador edad hipertenso
+## 1  MARIANO      SI   64         SI
+## 2    IRENE      NO   32         NO
+## 3     INES      SI   38         NO
+```
+
+```r
+# Eliminamos la columna
+df$hipertenso &lt;- NULL
+
+# Modificamos un valor específico
+df[1, "edad"] &lt;- 57
+df
+```
+
+```
+##   paciente fumador edad
+## 1  MARIANO      SI   57
+## 2    IRENE      NO   32
+## 3     INES      SI   38
+```
+
+---
+
+## Condicionales y bucles
+
+Las condicionales y los bucles son las dos estructuras de programación más importantes cualquiera sea el lenguajes que utilicemos.
+
+1. Las condicionales permiten ejecutar cierto código en función de si se cumple una condición lógica.
+
+2. Los bucles permiten repetir cierto código un número específíco de veces.
+
+---
+## 1. Condicionales
+
+Mandan a R realizar una tarea si se cumple una condición
+
+
+```r
+if (se cumple esto) {
+  haz esto
+}
+```
+
+Los `if` reciben una expresión lógica (`TRUE` o `FALSE`).
+
+Pueden anidarse
+
+```r
+x &lt;- 7
+if(x &lt;= 8){
+  if(x&gt;=5){
+    print("Número en [5,8]")
+  }
+}
+```
+
+```
+## [1] "Número en [5,8]"
+```
+Haz lo anterior con un único `if`.
+
+---
+## 1. Condicionales
+
+`if` se complementa con `else`
+
+```r
+if (se cumple esto) {
+  haz esto
+} else{
+  Sino haz esto otro
+}
+```
+
+Si hay más de dos condiciones, se puede usar `else if`
+
+
+```r
+if (se cumple esto) {
+  haz esto
+} else if(si se cumple esto){
+  haz esto otro
+} else{
+  sino haz esto
+}
+```
+
+---
+## 1. Condicionales
+
+Ejemplo
+
+```r
+x &lt;- 7
+if (x&gt;7) {
+  print(x + 3)
+} else if(x&lt;7){
+  print(x-3)
+} else{
+  print(x)
+}
+```
+---
+## 2. Bucles
+
+Permiten repetir operaciones un cierto número de veces. 
+Estudiaremos los bucles `for` y `while`.
+
+---
+## 2. Bucles - For
+
+Repite un trozo de código muchas veces, una por cada elemento en un conjunto de entrada
+
+```r
+for(valor in conjunto){
+  haz esto
+}
+```
+
+---
+## 2. Bucles - For
+
+Ejemplo
+
+
+```r
+for(valor in c("A", "B", "C")){
+  print("Iterando")
+}
+```
+
+```
+## [1] "Iterando"
+## [1] "Iterando"
+## [1] "Iterando"
+```
+
+```r
+for(valor in c("A", "B", "C")){
+  print(valor)
+}
+```
+
+```
+## [1] "A"
+## [1] "B"
+## [1] "C"
+```
+
+---
+## 2. Bucles - While
+
+Ejecuta un trozo de código mientras se cumple la condición de entrada
+
+
+```r
+while(condicion){
+  haz esto
+}
+```
+
+Ejemplo
+
+```r
+x &lt;- 1
+while(x &lt; 8){
+  print(x)
+  x &lt;- x + 1
+}
+```
+
+```
+## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+```
+
+---
+## Ejercicio 4
+
+Utilizando un bucle `for` y un `if`, suma los números pares entre 1 y 100 (ambos incluidos).
 
 ---
 
 ## Bibliografía
 
-* [Hands-On Programming with R](https://rstudio-education.github.io/hopr/), Grolemund (2014)
+Este tema está fundamentalmente basado en  [Hands-On Programming with R](https://rstudio-education.github.io/hopr/), Grolemund (2014)
 
-* [R for Data Science](https://r4ds.had.co.nz/), Wickham and Grolemund (2016)
-
-* [Data Visualization, A practical introduction](https://socviz.co/), Healy (2018)
-
-* [Data Science Specialization](https://github.com/DataScienceSpecialization/courses), Johns Hopkins University, Coursera
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
