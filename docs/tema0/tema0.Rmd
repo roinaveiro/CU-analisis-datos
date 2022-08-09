@@ -4,7 +4,7 @@ author: ""
 date: ""
 output: 
    xaringan::moon_reader:
-    css: "stats_slides.css"
+    css: "ds_slides.css"
     lib_dir: libs
     seal: false
     includes:
@@ -19,8 +19,6 @@ output:
 
 
 ```{r packages_setup, echo=FALSE, message=FALSE, warning=FALSE}
-library(tidyverse)
-library(NHANES)
 knitr::opts_chunk$set(echo = T, warning = F, message = F)
 knitr::opts_chunk$set(fig.width=8, fig.height=6) 
 ```
@@ -32,6 +30,8 @@ class: center, middle, inverse, title-slide
 # Análisis y Explotación de la Información
 
 ## Tema 0 - Introducción
+
+### Roi Naveiro 
 
 
 
@@ -209,49 +209,70 @@ knitr::include_graphics("img/covid.png")
 
 Adentrarnos en la ciencia de datos a través de R
 
-* Datos Tabulares
+* Datos Tabulares (observacions x variables)
 
 * Análisis Descriptivo, Exploratorio, Inferencial
 
 
-$$\\[1cm]$$
+$$\\[0.3cm]$$
 
 ```{r, echo=FALSE, out.width = '100%',  fig.align='center'}
 knitr::include_graphics("img/data-science-explore.png")
 ```
 
+Aprenderemos las herramientas fundamentales de R para las distintas fases de este esquema.
 ---
+## Las fases de un proyecto de análisis de datos
+
+1. **Importación**: cargar datos en R procedentes de: base de datos, fichero, aplicación web (API), etc.
+
+2. **Organización**: almacenar datos de manera consistente con análisis.
+
+3. **Transformación**: filtrado, creación de variables derivadas, etc.
+
+4. **Visualización**:  generación de preguntas, descubrimiento de tendencias.
+
+5. **Análisis Exploratorio**: Visualización + tranformación aplicados de forma sistemática.
+
+6. **Modelización**: confirmar hipótesis, responder preguntas.
+
+--
+
+Todo esto usando el **lenguaje de programación R**.
+
+---
+
 ## Tema 1 - Programación  en R
 
 - Stuff
 
 
 ---
-## Tema 2 - Importar Datos 
+## Tema 2 - Importación de los Datos 
 
 - Stuff
 
 ---
 
-## Tema 3 - Organizar Datos 
+## Tema 3 - Organización de los Datos 
 
 - Stuff
 
 ---
 
-## Tema 4 - Transformar Datos 
+## Tema 4 - Transformación de los Datos 
 
 - Stuff
 
 ---
 
-## Tema 5 - Visualizar Datos 
+## Tema 5 - Visualización de los Datos 
 
 - Stuff
 
 ---
 
-## Tema 6 - EDA
+## Tema 6 - Análisis Exploratorio de los Datos
 
 - Stuff
 

@@ -4,7 +4,7 @@ author: ""
 date: ""
 output: 
    xaringan::moon_reader:
-    css: "stats_slides.css"
+    css: "ds_slides.css"
     lib_dir: libs
     seal: false
     includes:
@@ -31,237 +31,14 @@ class: center, middle, inverse, title-slide
 
 # Análisis y Explotación de la Información
 
-## Tema 0 - Introducción
+## Tema 1 - Programación en R
+
+### Roi Naveiro
 
 
 
 ---
 
-## ¿Qué es la Ciencia de Datos?
-
-*"Data science is a concept to unify statistics, data analysis, machine learning and their related methods in order to **understand and analyze** actual phenomena with **data**. It employs techniques and theories drawn from many fields within the context of <font class="vocab">mathematics, statistics, information science, and computer science</font>."*
-
-.pull-right[
-[-Wikipedia](https://en.wikipedia.org/wiki/Data_science)
-]
-
----
-
-## ¿Qué son los Datos?
-
-*"A collection of discrete units of information that in their most basic forms convey quantity, quality, fact, statistics, or other basic units of meaning."*
-
-.pull-right[
-[-Wikipedia](https://en.wikipedia.org/wiki/Data)
-]
-
---
-
-<br>
-<font class="vocab">¡Definición bastante vaga!</font>
-
----
-
-## Tipos de Datos
-
-* Cualquier unidad de información es un dato
-
-* Una distinción importante
-
-  * Datos estructurados
-  * Datos no estructurados
-  
----
-
-## Datos Estructurados
-
-Datos tabulares
-
-<img class=center src="img/excel.png" height=400 />
-
----
-
-## Datos No Estructurados
-
-Todo lo demás
-
-* Imágenes
-
-* Audio
-
-* Vídeo
-
-* Texto
-
----
-
-
-## Tipos de Análisis de Datos
-
-* Descriptivo
-
-* Exploratorio
-
-* Inferencial
-
-* Predictivo
-
-* Causal
-
----
-
-## Análisis Descriptivo
-
-**Objetivo**: resumir la información presente en un conjunto de datos
-
-  * Primer tipo de análisis de datos a realizar
-  * En general, las descripciones no se pueden generalizar sin la ayuda de modelos estadísticos
-  
----
-
-## Análisis Descriptivo
-
-La base de datos `mtcars` de R contiene información extraída de la *1974 Motor Trend US magazine* acerca de 10 aspectos de diseño de rendimiento de 32 vehículos. La variable `am` se refiere a la transmisión (0 = automática, 1 = manual)
-
-```{r,fig.align='center',out.extra='angle=90', echo=FALSE}
-
-library(dplyr)
-library(explore)
-mtcars %>% explore(am)
-
-```
-
----
-
-## Análisis Exploratorio
-
-**Objetivo**: descubrir relaciones entre características de los datos 
-
-  * Motiva preguntas de investigación
-
----
-
-## Análisis Exploratorio
-
-La variable `wt` se refiere al peso del vehículo y `mpg` a las millas por galón
-
-```{r,fig.align='center',out.extra='angle=90', echo=FALSE}
-
-library(dplyr)
-library(explore)
-mtcars %>% explore(wt, mpg)
-
-```
-
----
-
-## Análisis Inferencial
-
-**Objetivo**: usar una muestra pequeña de datos acerca de una población para extraer alguna información acerca de la misma.
-
-  * Aquí entra en juego la **estadística**
-  
----
-
-## Análisis Inferencial
-
-```{r, echo=FALSE, out.width = '100%',  fig.align='center'}
-knitr::include_graphics("img/pollution.png")
-```
-
-
----
-## Análisis Predictivo
-
-**Objetivo**: utilizar datos sobre un conjunto de objetos para predecir el valor de una variable en un objeto nunca antes visto
-
-  * X predice Y no implica que X sea causa de Y
-
----
-## Análisis Predictivo
-
-```{r pressure, echo=FALSE, out.width = '80%',  fig.align='center'}
-knitr::include_graphics("img/soy.svg")
-```
-
-[Fuente](https://www.r-bloggers.com/2020/11/time-series-demand-forecasting/)
-
----
-## Análisis Causal
-
-**Objetivo**: encontrar qué le sucede a una variable cuando se modifica el valor de otra
-
-  * Las relaciones causales usualmente identifican efectos medios, no efectos individuales
-
----
-## Análisis Causal
-
-
-$$\\[1in]$$
-
-```{r, echo=FALSE, out.width = '100%',  fig.align='center'}
-knitr::include_graphics("img/covid.png")
-```
-
-
----
-## Este curso
-
-Adentrarnos en la ciencia de datos a través de R
-
-* Datos Tabulares
-
-* Análisis Descriptivo, Exploratorio, Inferencial
-
-
-$$\\[1cm]$$
-
-```{r, echo=FALSE, out.width = '100%',  fig.align='center'}
-knitr::include_graphics("img/data-science-explore.png")
-```
-
----
-## Tema 1 - Programación  en R
-
-- Stuff
-
-
----
-## Tema 2 - Importar Datos 
-
-- Stuff
-
----
-
-## Tema 3 - Organizar Datos 
-
-- Stuff
-
----
-
-## Tema 4 - Transformar Datos 
-
-- Stuff
-
----
-
-## Tema 5 - Visualizar Datos 
-
-- Stuff
-
----
-
-## Tema 6 - EDA
-
-- Stuff
-
----
-
-## Tema 7 - Modelización de Datos 
-
-- Stuff
-
----
 
 ## R y RStudio
 
@@ -280,15 +57,250 @@ knitr::include_graphics("img/r-rstudio.png")
 
 ---
 
-## Evaluación
+## Interfaz de usuario de R
 
-* 20%
+- RStudio: forma de comunicarse con máquina
+- R: lenguaje de comunicación
 
-* 20%
+```{r, echo=FALSE, out.width = '70%',  fig.align='center'}
+knitr::include_graphics("img/RGUI.png")
+```
+---
 
-* 60%
+## Ejecutar comandos
+
+```{r, echo=TRUE}
+123 * 65
+```
+
+En consola aparece como
+
+```{r, echo=FALSE, out.width = '20%',  fig.align='center'}
+knitr::include_graphics("img/console.png")
+```
+
+
+```{r, echo=FALSE}
+options(width = 60)
+```
+
+```{r, echo=TRUE}
+1000:1020
+```
+
+Uso como calculadora
+
+```{r, echo=TRUE}
+(7 + 7) / 7 * 2 
+```
 
 ---
+
+
+
+## Comentarios
+
+* Comentarios con `#`
+
+```{r, echo=TRUE}
+# Esto es un comentario
+# Sumo los números del 1 al 100
+sum(1:100)
+```
+
+* Salida de código con `##`
+
+* Comprueba que la siguiente expresión es cierta para $K=100$ y $K=1000$
+
+  $$
+  \sum_{i=1}^{K} i = \frac{K \cdot (K + 1)}{2}
+  $$
+---
+## Objetos
+
+* Si queremos un valor (o conjunto de valores) de forma recurrente hay que **guardarlos en memoria**, dándole un nombre.
+
+```{r, echo=TRUE}
+# Esto crea un objeto de R con valor pi
+a <- pi
+
+# Sumo 3 al valor guardado
+a + 3
+```
+
+* Podemos guardar múltiples valores
+
+```{r, echo=TRUE}
+b <-1:10
+b
+```
+
+---
+## Objetos
+
+Los objetos guardados aparecen en la ventana de *Environment*
+
+```{r, echo=FALSE, out.width = '100%',  fig.align='center'}
+knitr::include_graphics("img/env.png")
+```
+
+El nombre de un ojeto no puede empezar con un número, ni tampoco incluír ciertos caracteres especiales como `^`, `$`, `@`, etc.
+
+---
+## Objetos
+
+R sobre-escribe
+
+```{r, echo=TRUE}
+c <- 5
+c
+
+c <- 20
+c
+```
+
+La función `ls()` muestra nombres usados
+
+```{r, echo=TRUE}
+ls()
+```
+
+---
+## Operaciones sobre objetos
+
+* R realiza operaciones *element-wise*
+
+* Vector - Número
+```{r, echo=TRUE}
+b <- 1:10
+b + 7
+```
+
+* Vector - Vector (misma longitud)
+```{r, echo=TRUE}
+b * b
+```
+
+---
+## Operaciones sobre objetos
+
+* Vector - Vector (diferente longitud)
+
+```{r, echo=TRUE}
+# R repite el vector corto hasta alcanzar la longitud del largo
+# Si la longitud del corto no es múltiplo de la del largo lanza un warning
+d <- 1:2
+e <- 1:4
+
+d * e
+```
+
+¡Pruébalo!
+
+---
+## Funciones
+
+R tiene muchas funciones predefinidas 
+```{r, echo=TRUE}
+# Calcula la media de los números del 1 al 10
+mean(1:10)
+
+# El argumento de una función puede ser el resultado de otra función
+round(mean(1:10))
+```
+
+Algunas funciones tienen varios argumentos. Cada uno tiene un nombre
+
+```{r, echo=TRUE}
+# Muestrea un número del 1 al 10
+sample(x = 1:10, size = 1)
+
+# Nombre opcional
+sample(1:10, 1)
+```
+
+---
+## Funciones
+
+La función `args()` muestra los argumentos de una función
+```{r, echo=TRUE}
+args(sample)
+```
+
+¡Algunas tienen valores por defecto! 
+Pregunta, ¿qué valores tiene por defecto la función `round()`?
+
+**Buena práctica**: escribir nombre de argumentos (salvo quizás el primero).
+
+---
+## Definiendo funciones propias
+
+* Permiten definir operaciones de uso recurrente (no implementadas en R).
+```{r, echo=TRUE, eval=FALSE}
+una_funcion <- function(){}
+```
+
+* Función que genera 10 números entre 1 y 100 y devuelva su suma
+
+--
+
+```{r, echo=TRUE}
+gen2_1_100 <- function(){
+  nums <- sample(1:100, size = 2, replace = TRUE)
+  print(nums)
+  return(sum(nums))
+}
+```
+
+* La probamos
+
+```{r, echo=TRUE}
+a <- gen2_1_100()
+a
+```
+
+---
+## Definiendo funciones propias
+
+* Argumentos
+
+```{r, echo=TRUE}
+# Pasamos el tamaño como argumento
+# 2 es el valor por defecto
+gen2_1_100 <- function(n=2){
+  nums <- sample(1:100, size = n, replace = TRUE)
+  print(nums)
+  return(sum(nums))
+}
+```
+
+* La probamos sin argumento
+
+```{r, echo=TRUE}
+gen2_1_100()
+```
+
+---
+## Definiendo funciones propias
+
+* La probamos con argumento
+```{r, echo=TRUE}
+gen2_1_100(10)
+```
+
+---
+## Ejercicio 1
+
+Escribe una función que devuelva $k$ números, donde cada número es
+la suma de $n$ números escogidos al azar entre 1 y 100 (con reemplazamiento), divido entre n.
+
+Pinta un histograma con los resultados de $k=10000$ para $n=1$, $n=2$, $n=10$ y $n=100$.
+Pista: puedes usar la función `hist()`.
+
+¿Qué observas?
+
+---
+## Instalar paquetes
 
 ## Recursos Interesantes
 
