@@ -251,43 +251,53 @@ Todo esto usando el **lenguaje de programación R**.
 
 ## Tema 1 - Programación  en R
 
-- Stuff
+- Introducción
+
+- Funciones
+
+- Paquetes y ayudas
+
+- Tipos de objetos de R
+
+- Selección y modificación de valores en objetos de R
+
+- Bucles y condicionales
 
 
 ---
-## Tema 2 - Importación de los Datos 
 
-- Stuff
+## Tema 2 - Análisis Exploratorio de los Datos
 
----
+- Visualización de datos
 
-## Tema 3 - Organización de los Datos 
+- Transformación de datos
 
-- Stuff
+- Análisis Exploratorio
 
----
-
-## Tema 4 - Transformación de los Datos 
-
-- Stuff
+- Ética de datos
 
 ---
 
-## Tema 5 - Visualización de los Datos 
+## Tema 3 - Data Wrangling
 
-- Stuff
+- Tibbles
+
+- Importación de datos
+
+- Organización de datos
+
+- Transformación de datos
 
 ---
 
-## Tema 6 - Análisis Exploratorio de los Datos
-
-- Stuff
+## Tema 4 - Comunicación de resultados y ética de los datos
 
 ---
 
-## Tema 7 - Modelización de Datos 
+## Tema 5 - Modelización
 
-- Stuff
+- TBD
+
 
 ---
 

@@ -1,0 +1,41 @@
+---
+title: ""
+author: ""
+date: ""
+output: 
+   xaringan::moon_reader:
+    css: "ds_slides.css"
+    lib_dir: libs
+    seal: false
+    includes:
+      after_body: insert-logo.html
+    nature: 
+      highlightLines: true
+      highlightStyle: github
+      countIncrementalSlides: false
+      slideNumberFormat: "%current%"  
+---
+
+
+
+```{r packages_setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+knitr::opts_chunk$set(fig.width=8, fig.height=6) 
+```
+
+class: center, middle, inverse, title-slide
+
+<div class="title-logo"></div>
+
+# Análisis y Explotación de la Información
+
+## Tema 2 - Análisis Exploratorio de los Datos
+
+### Roi Naveiro
+
+
+---
+
+## Bibliografía
+
+Este tema está fundamentalmente basado en  [Hands-On Programming with R](https://rstudio-education.github.io/hopr/), Grolemund (2014)
