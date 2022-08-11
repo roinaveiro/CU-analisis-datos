@@ -479,7 +479,7 @@ class: center, middle, inverse
 
 Múltiples gráficas en función de variable
 
-```{r}
+```{r, fig.width=6.5, fig.height=4.5}
 ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) + 
   geom_point() +
   labs(title = "PIB per Cápita vs Esperanza de Vida",
@@ -494,7 +494,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 
 Múltiples gráficas en función de variable
 
-```{r}
+```{r, fig.width=6.5, fig.height=4.5}
 ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) + 
   geom_point() +
   labs(title = "PIB per Cápita vs Esperanza de Vida",
@@ -509,7 +509,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 
 Múltiples gráficas en función de variable
 
-```{r}
+```{r, fig.width=6.5, fig.height=4.5}
 ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) + 
   geom_point() +
   labs(title = "PIB per Cápita vs Esperanza de Vida",
@@ -524,7 +524,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 
 Múltiples gráficas en función de variable
 
-```{r}
+```{r, fig.width=6.5, fig.height=4.5}
 ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) + 
   geom_point() +
   labs(title = "PIB per Cápita vs Esperanza de Vida",
