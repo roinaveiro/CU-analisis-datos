@@ -280,7 +280,6 @@ Todo esto usando el **lenguaje de programación R**.
 
 ## Tema 3 - Data Wrangling
 
-- Tibbles
 
 - Importación de datos
 
@@ -291,6 +290,7 @@ Todo esto usando el **lenguaje de programación R**.
 ---
 
 ## Tema 4 - Comunicación de resultados y ética de los datos
+- TBD
 
 ---
 
