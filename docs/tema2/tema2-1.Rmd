@@ -33,7 +33,11 @@ class: center, middle, inverse, title-slide
 
 ### 2.1 Visualización 
 
+<br>
+<br>
+.pull-left[
 ### Roi Naveiro
+]
 ---
 
 ## Análisis Exploratioro de los Datos

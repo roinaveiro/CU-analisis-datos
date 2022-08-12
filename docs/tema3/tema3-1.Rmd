@@ -31,8 +31,11 @@ class: center, middle, inverse, title-slide
 
 ## Tema 3 - Data Wrangling
 
+<br>
+<br>
+.pull-left[
 ### Roi Naveiro
-
+]
 ---
 
 

@@ -31,7 +31,14 @@ class: center, middle, inverse, title-slide
 
 ## Tema 0 - Introducción
 
-### Roi Naveiro 
+<br>
+<br>
+<br>
+<br>
+<br>
+.pull-left[
+### Roi Naveiro
+]
 
 
 

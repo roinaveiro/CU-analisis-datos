@@ -31,7 +31,12 @@ class: center, middle, inverse, title-slide
 
 ## Tema 1 - Programación en R
 
+<br>
+<br>
+<br>
+.pull-left[
 ### Roi Naveiro
+]
 
 
 
