@@ -27,14 +27,14 @@ class: center, middle, inverse, title-slide
 
 <div class="title-logo"></div>
 
+<br>
+
 # Análisis y Explotación de la Información
 
 ## Tema 2 - Análisis Exploratorio de los Datos
 
 ### 2.2 Transformación 
 
-
-<br>
 <br>
 .pull-left[
 ### Roi Naveiro

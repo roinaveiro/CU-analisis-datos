@@ -27,13 +27,13 @@ class: center, middle, inverse, title-slide
 
 <div class="title-logo"></div>
 
+<br>
 # Análisis y Explotación de la Información
 
 ## Tema 2 - Análisis Exploratorio de los Datos
 
 ### 2.1 Visualización 
 
-<br>
 <br>
 .pull-left[
 ### Roi Naveiro
@@ -970,7 +970,7 @@ class: center, middle
 
 * [ggplot2.tidyverse.org](https://ggplot2.tidyverse.org/)
 
-* `ggplot2` [cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
+* `ggplot2` [cheat sheet](https://diegokoz.github.io/intro_ds/fuentes/ggplot2-cheatsheet-2.1-Spanish.pdf)
 
 * [Top 50 `ggplot2` visualizations](http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html)
 
