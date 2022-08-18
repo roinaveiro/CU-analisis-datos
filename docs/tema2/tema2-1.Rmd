@@ -404,7 +404,7 @@ class: center, middle, inverse
 
 ## Aesthetics
 
-Las siguientes aracterísticas visuales del gráfico pueden ser utilizadas para representar 
+Las siguientes características visuales del gráfico pueden ser utilizadas para representar 
 una variable extra
 
 * shape

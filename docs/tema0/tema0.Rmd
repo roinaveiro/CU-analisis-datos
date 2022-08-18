@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Análisis y Explotación de la Información"
 author: ""
 date: ""
 output: 
@@ -281,7 +281,7 @@ Todo esto usando el **lenguaje de programación R**.
 
 - Análisis Exploratorio
 
-- Ética de datos
+- Estudios observacionales vs Experimentales. Ética de datos
 
 ---
 
@@ -296,13 +296,14 @@ Todo esto usando el **lenguaje de programación R**.
 
 ---
 
-## Tema 4 - Comunicación de resultados y ética de los datos
+
+## Tema 4 - Modelización
+
 - TBD
 
 ---
 
-## Tema 5 - Modelización
-
+## Tema 5 - Comunicación de resultados y ética de los datos
 - TBD
 
 
