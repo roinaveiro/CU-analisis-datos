@@ -1,0 +1,28 @@
+---
+title: "**Análisis y Explotación de la Información**"
+subtitle: "CUNEF Universidad"
+date: "Página actualizada: `r format.Date(file.mtime('index.Rmd'),'%Y-%m-%d')`"
+---
+
+Esta es la página del curso de Análisis y Explotación de la Información creado por
+[Roi Naveiro](http://roinaveiro.github.io)
+
+## **Contenido**
+
+### Tema 0 : Introducción
+
+  - [Diapositivas](./tema0/tema0.html)
+  
+### Tema 1 : Programación en R
+
+  - [Diapositivas](./tema1/tema1.html)
+  
+### Tema 2 : Análisis Exploratorio de los Datos
+
+- ### 2.1: Visualización de datos
+  - [Diapositivas](./tema2/tema2-1.html)
+    
+- ### 2.2: Transformación de datos
+  - [Diapositivas](./tema2/tema2-2.html)
+
+   
