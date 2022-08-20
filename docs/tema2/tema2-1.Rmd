@@ -713,6 +713,11 @@ ggplot(gapminder67, mapping = aes(x = continent)) +
 ```
 
 ---
+class: center, middle
+
+## Visualización: datos bivariantes
+
+---
 
 ## Visualización: datos bivariantes contínuo - categórico
 

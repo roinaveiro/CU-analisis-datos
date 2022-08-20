@@ -229,7 +229,7 @@ ggplot(data=iris, aes(x=Petal.Length, fill=Species)) +
 
 ```r
 ggplot(data=iris, aes(x=Petal.Length, color=Species)) + 
-  geom_freqpoly(binwidht=0.1) + 
+  geom_freqpoly() + 
   labs(x = "Longitud del Pétalo (cm)")
 ```
 
@@ -323,10 +323,317 @@ class: center, middle, inverse
 ## EDA: Valores ausentes
 
 ---
+## Valores atípicos
+
+Ante valores atípicos que se quieran eliminar, dos opciones:
+
+- Eliminar fila entera (mucha pérdida de información)
+
+
+```r
+diamonds2 &lt;- diamonds %&gt;%
+  filter(y&gt;=3 &amp; y&lt;=20)
+```
+
+- Reemplazar valores atípicos con `NA`
+
+
+```r
+diamonds2 &lt;- diamonds %&gt;%
+  mutate(y = ifelse(y&lt;3 | y&gt;20, NA, y))
+```
+
+- **NOTA**: primer argumento de `ifelse()` es lógico, segundo valor si `TRUE` y tercero, valor si `FALSE`
+
+---
+## Valores ausentes
+
+Los valores ausentes se indican con un warning
+
+```r
+ggplot(data=diamonds2, mapping = aes(x=x, y=y))+
+  geom_point()
+```
+
+```
+## Warning: Removed 9 rows containing missing values (geom_point).
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+## Valores ausentes
+
+Puede eliminarse con `na.rm = TRUE`
+
+```r
+ggplot(data=diamonds2, mapping = aes(x=x, y=y))+
+  geom_point(na.rm = T)
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
 class: center, middle, inverse
 
-## EDA: Coariación
+## EDA: Covariación
 
+---
+
+## Covariación
+
+- Tendencia de los valores de dos o más variables a cambiar conjuntamente
+
+- La manera de visualizar covariación, depende del tipo de variables (como vimos)
+
+  * Categórica - Contínua
+  * Categórica - Categórica
+  * Contínua - Contínua
+  
+  
+---
+
+## Covariación: Categórica - Contínua
+
+
+```r
+ggplot(data=diamonds, aes(x=price, color=cut)) + 
+  geom_freqpoly()
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Covariación: Categórica - Contínua
+
+`..density..` pinta densidad en eje y, que es la cuenta estandarizada para que el área de cada polígono sea 1
+
+```r
+ggplot(data=diamonds, aes(x=price, y=..density.., color=cut)) + 
+  geom_freqpoly()
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Covariación: Categórica - Contínua
+
+¿Qué otra forma hay de visualizar covariación entre variables categóricas y contínuas?
+--
+
+
+```r
+ggplot(data = mpg, aes(x = class, y = hwy)) + 
+  geom_boxplot()
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Covariación: Categórica - Contínua
+
+A veces, conviene reordenar...
+
+
+```r
+*ggplot(data = mpg, aes(x = reorder(class, hwy, FUN = median), y = hwy)) +
+  geom_boxplot()
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Covariación: Categórica - Categórica
+
+Habíamos visto diagramas de barras. Otra forma:
+
+
+```r
+ggplot(data = diamonds, aes(x = cut, y = color)) + 
+* geom_count()
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-18-1.png" style="display: block; margin: auto;" /&gt;
+---
+
+## Covariación: Categórica - Categórica
+
+¿Cómo harías esto con `dplyr`?
+--
+
+
+```r
+diamonds %&gt;%
+  group_by(color, cut) %&gt;%
+  summarise(n = n())
+```
+
+```
+## # A tibble: 35 × 3
+## # Groups:   color [7]
+##    color cut           n
+##    &lt;ord&gt; &lt;ord&gt;     &lt;int&gt;
+##  1 D     Fair        163
+##  2 D     Good        662
+##  3 D     Very Good  1513
+##  4 D     Premium    1603
+##  5 D     Ideal      2834
+##  6 E     Fair        224
+##  7 E     Good        933
+##  8 E     Very Good  2400
+##  9 E     Premium    2337
+## 10 E     Ideal      3903
+## # … with 25 more rows
+```
+---
+
+## Covariación: Categórica - Categórica
+
+También sirve
+
+
+```r
+diamonds %&gt;%
+  count(color, cut) 
+```
+
+```
+## # A tibble: 35 × 3
+##    color cut           n
+##    &lt;ord&gt; &lt;ord&gt;     &lt;int&gt;
+##  1 D     Fair        163
+##  2 D     Good        662
+##  3 D     Very Good  1513
+##  4 D     Premium    1603
+##  5 D     Ideal      2834
+##  6 E     Fair        224
+##  7 E     Good        933
+##  8 E     Very Good  2400
+##  9 E     Premium    2337
+## 10 E     Ideal      3903
+## # … with 25 more rows
+```
+
+---
+## Covariación: Categórica - Categórica
+
+Con esto
+
+
+```r
+diamonds %&gt;%
+  count(color, cut) %&gt;%
+  ggplot(aes(x = color, y = cut, fill = n))+ 
+* geom_tile()
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+## Covariación: Contínua - Contínua
+
+- Vimos cómo hacerlo con `geom_point()`
+
+- En datasets muy grandes, puntos solapan
+
+- ¿Idea? Usar `aplha`
+
+---
+## Covariación: Contínua - Contínua
+
+
+```r
+ggplot(data=diamonds, aes(x = carat, y = price)) + 
+* geom_point(alpha = 0.01)
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-22-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+## Covariación: Contínua - Contínua
+
+Mejor
+
+
+```r
+ggplot(data=diamonds, aes(x = carat, y = price)) + 
+* geom_bin2d()
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+## Covariación: Contínua - Contínua
+
+Mejor
+
+
+```r
+# install.packages("hexbin")
+ggplot(data=diamonds, aes(x = carat, y = price)) + 
+* geom_hex()
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-24-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+## Covariación: Contínua - Contínua
+
+Otra opción
+
+
+```r
+ggplot(data=diamonds, aes(x = carat, y = price, )) + 
+* geom_boxplot(aes(group = cut_width(carat, 0.1)) )
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-25-1.png" style="display: block; margin: auto;" /&gt;
+
+
+---
+## Covariación: Contínua - Contínua
+
+Otra opción (mismo número de puntos por cada bin)
+
+
+```r
+ggplot(data=diamonds, aes(x = carat, y = price, )) + 
+* geom_boxplot(aes(group = cut_number(carat, 20)) )
+```
+
+&lt;img src="tema2-3_files/figure-html/unnamed-chunk-26-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle, inverse
+
+## EDA: Patrones y modelos
+
+---
+
+## Patrones y modelos
+
+Los patrones revelan pistas acerca de relaciones entre variables. Ante uno, cabe preguntarse
+
+- ¿Puede ser debido al azar?
+
+- ¿Cómo se describe la relación que implica?
+
+- ¿Cómo es de fuerte?
+
+- ¿Qué otras variables afectan esta relación?
+
+- ¿Cambian la relación si observamos subgrupos de los datos?
+
+
+Los **modelos** sirven para extraer patrones de los datos...
+
+... e.g. pueden usarse para eliminar el efecto de una variable y estudiar el efecto restante.
 
 ---
 
