@@ -2,7 +2,27 @@
 title: "**Análisis y Explotación de la Información**"
 subtitle: "CUNEF Universidad"
 date: "Página actualizada: `r format.Date(file.mtime('index.Rmd'),'%Y-%m-%d')`"
+output:
+  html_document:
+    css: ./index.css
+    toc: yes
+    toc_float: yes
+    fig_caption: no
+    seal : False
+    includes:
+      after_body: insert-logo.html
+  pdf_document:
+    toc: yes
 ---
+
+
+<div class="title-logo"></div>
+
+```{r packages_setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+knitr::opts_chunk$set(fig.width=8, fig.height=6) 
+```
+
 
 Esta es la página del curso de Análisis y Explotación de la Información creado por
 [Roi Naveiro](http://roinaveiro.github.io)
@@ -19,10 +39,10 @@ Esta es la página del curso de Análisis y Explotación de la Información crea
   
 ### Tema 2 : Análisis Exploratorio de los Datos
 
-- ### 2.1: Visualización de datos
+- 2.1: Visualización de datos
   - [Diapositivas](./tema2/tema2-1.html)
     
-- ### 2.2: Transformación de datos
+- 2.2: Transformación de datos
   - [Diapositivas](./tema2/tema2-2.html)
 
    
