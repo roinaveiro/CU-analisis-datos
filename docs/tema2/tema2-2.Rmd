@@ -628,7 +628,7 @@ gapminder %>%
   mutate(lifeExpDecade = lifeExp - lifeExp%%10) %>%
   filter(year == 1967) %>%
   count(continent, lifeExpDecade) %>%
-  mutate(prop = n / sum(n))
+  mutate(prop = n / sum(n)) %>% slice(1:10)
 ```
 
 

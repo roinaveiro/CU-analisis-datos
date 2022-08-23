@@ -1017,30 +1017,23 @@ gapminder %&gt;%
   mutate(lifeExpDecade = lifeExp - lifeExp%%10) %&gt;%
   filter(year == 1967) %&gt;%
   count(continent, lifeExpDecade) %&gt;%
-  mutate(prop = n / sum(n))
+  mutate(prop = n / sum(n)) %&gt;% slice(1:10)
 ```
 
 ```
-## # A tibble: 17 × 4
-##    continent lifeExpDecade     n    prop
-##    &lt;fct&gt;             &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;
-##  1 Africa               30    10 0.0704 
-##  2 Africa               40    29 0.204  
-##  3 Africa               50    11 0.0775 
-##  4 Africa               60     2 0.0141 
-##  5 Americas             40     2 0.0141 
-##  6 Americas             50     9 0.0634 
-##  7 Americas             60    11 0.0775 
-##  8 Americas             70     3 0.0211 
-##  9 Asia                 30     2 0.0141 
-## 10 Asia                 40    10 0.0704 
-## 11 Asia                 50    13 0.0915 
-## 12 Asia                 60     5 0.0352 
-## 13 Asia                 70     3 0.0211 
-## 14 Europe               50     1 0.00704
-## 15 Europe               60    11 0.0775 
-## 16 Europe               70    18 0.127  
-## 17 Oceania              70     2 0.0141
+## # A tibble: 10 × 4
+##    continent lifeExpDecade     n   prop
+##    &lt;fct&gt;             &lt;dbl&gt; &lt;int&gt;  &lt;dbl&gt;
+##  1 Africa               30    10 0.0704
+##  2 Africa               40    29 0.204 
+##  3 Africa               50    11 0.0775
+##  4 Africa               60     2 0.0141
+##  5 Americas             40     2 0.0141
+##  6 Americas             50     9 0.0634
+##  7 Americas             60    11 0.0775
+##  8 Americas             70     3 0.0211
+##  9 Asia                 30     2 0.0141
+## 10 Asia                 40    10 0.0704
 ```
 
 
