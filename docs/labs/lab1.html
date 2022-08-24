@@ -11,7 +11,7 @@
 
 
 
-<title>Análisis y Explotación de la Información</title>
+<title>Lab 01 - Programación en R</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1465,6 +1465,26 @@ padding-right: 0;
 padding-left: 90px;
 font-size: 13pt;
 }
+ol>li:before {
+
+content: "Question " counter(li)".";
+
+counter-increment: li;
+position: absolute;
+color: #222222;
+left: -0.5px;
+font-weight: bold;
+}
+ol ol>li:before {
+counter-reset: sub-item;
+
+
+position: absolute;
+color: #222222;
+left: -0.5px;
+font-weight: bold;
+padding-left: 90px;
+}
 .td {
 font-size: 10pt;
 }
@@ -1651,10 +1671,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore"><strong>Análisis y Explotación de la
-Información</strong></h1>
-<h3 class="subtitle">CUNEF Universidad</h3>
-<h4 class="date">Página actualizada: 2022-08-24</h4>
+<h1 class="title toc-ignore">Lab 01 - Programación en R</h1>
 
 </div>
 
@@ -1662,70 +1679,37 @@ Información</strong></h1>
 <div class="title-logo">
 
 </div>
-<p>Esta es la página del curso de Análisis y Explotación de la
-Información creado por <a href="http://roinaveiro.github.io">Roi
-Naveiro</a></p>
-<div id="contenido" class="section level2">
-<h2><strong>Contenido</strong></h2>
-<div id="tema-0-introducción" class="section level3">
-<h3>Tema 0 : Introducción</h3>
-<ul>
-<li><a href="./tema0/tema0.html">Diapositivas</a></li>
-</ul>
+<div id="ejercicio-1" class="section level2">
+<h2>Ejercicio 1</h2>
+<p>Escribe una función que devuelva <span class="math inline">\(k\)</span> números, donde cada número es la suma
+de <span class="math inline">\(n\)</span> números escogidos al azar
+entre 1 y 100 (con reemplazamiento), divido entre n.</p>
+<p>Pinta un histograma con los resultados de <span class="math inline">\(k=10000\)</span> para <span class="math inline">\(n=1\)</span>, <span class="math inline">\(n=2\)</span>, <span class="math inline">\(n=10\)</span> y <span class="math inline">\(n=100\)</span>. Pista: puedes usar la función
+<code>hist()</code>.</p>
+<p>¿Qué observas?</p>
 </div>
-<div id="tema-1-programación-en-r" class="section level3">
-<h3>Tema 1 : Programación en R</h3>
-<ul>
-<li><a href="./tema1/tema1.html">Diapositivas</a></li>
-</ul>
+<div id="ejercicio-2" class="section level2">
+<h2>Ejercicio 2</h2>
+<p>Utiliza la ayuda de la función <code>replicate()</code> para conocer
+su funcionamiento. Resuelve el Ejercicio 1 sin usar un bucle (si es que
+lo habías usado).</p>
 </div>
-<div id="tema-2-análisis-exploratorio-de-los-datos" class="section level3">
-<h3>Tema 2 : Análisis Exploratorio de los Datos</h3>
-<ul>
-<li>2.1: Visualización de datos
-<ul>
-<li><a href="./tema2/tema2-1.html">Diapositivas</a></li>
-</ul></li>
-<li>2.2: Transformación de datos
-<ul>
-<li><a href="./tema2/tema2-2.html">Diapositivas</a></li>
-</ul></li>
-<li>2.3: Análisis Exploratorio de datos
-<ul>
-<li><a href="./tema2/tema2-3.html">Diapositivas</a></li>
-</ul></li>
-</ul>
+<div id="ejercicio-3" class="section level2">
+<h2>Ejercicio 3</h2>
+<p>La base de datos <code>mtcars</code> de R contiene información
+extraída de la <em>1974 Motor Trend US magazine</em> acerca de 10
+aspectos de diseño de rendimiento de 32 vehículos. Usando esta base de
+datos, calcula</p>
+<p><strong>Pregunta 1.</strong> La diferencia entre el consumo medio de
+los vehículos de transmisión automática y los de transmisión manual.</p>
+<p><strong>Pregunta 2.</strong> La misma diferencia pero únicamente para
+vehículos de más de 3000 lbs.</p>
+<p>Pista: la ayuda ?mtcars te puede ser útil</p>
 </div>
-<div id="tema-3-data-wrangling" class="section level3">
-<h3>Tema 3 : Data Wrangling</h3>
-<ul>
-<li>3.1: Importación de datos
-<ul>
-<li><a href="./tema3/tema3-1.html">Diapositivas</a></li>
-</ul></li>
-</ul>
-</div>
-</div>
-<div id="laboratorios" class="section level2">
-<h2><strong>Laboratorios</strong></h2>
-<div id="lab-01---programación-en-r" class="section level3">
-<h3>Lab 01 - Programación en R</h3>
-<ul>
-<li><a href="./labs/lab1.html">Ejercicios</a></li>
-</ul>
-</div>
-<div id="lab-02---visualización" class="section level3">
-<h3>Lab 02 - Visualización</h3>
-<ul>
-<li><a href="./labs/lab2.html">Ejercicios</a></li>
-</ul>
-</div>
-<div id="lab-03---transformación" class="section level3">
-<h3>Lab 03 - Transformación</h3>
-<ul>
-<li><a href="./labs/lab2.html">Ejercicios</a></li>
-</ul>
-</div>
+<div id="ejercicio-4" class="section level2">
+<h2>Ejercicio 4</h2>
+<p>Utilizando un bucle <code>for</code> y un <code>if</code>, suma los
+números pares entre 1 y 100 (ambos incluidos).</p>
 </div>
 
 

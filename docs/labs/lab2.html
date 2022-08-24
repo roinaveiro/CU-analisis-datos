@@ -11,7 +11,7 @@
 
 
 
-<title>Análisis y Explotación de la Información</title>
+<title>Lab 02 - Visualización</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1465,6 +1465,26 @@ padding-right: 0;
 padding-left: 90px;
 font-size: 13pt;
 }
+ol>li:before {
+
+content: "Question " counter(li)".";
+
+counter-increment: li;
+position: absolute;
+color: #222222;
+left: -0.5px;
+font-weight: bold;
+}
+ol ol>li:before {
+counter-reset: sub-item;
+
+
+position: absolute;
+color: #222222;
+left: -0.5px;
+font-weight: bold;
+padding-left: 90px;
+}
 .td {
 font-size: 10pt;
 }
@@ -1651,10 +1671,7 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore"><strong>Análisis y Explotación de la
-Información</strong></h1>
-<h3 class="subtitle">CUNEF Universidad</h3>
-<h4 class="date">Página actualizada: 2022-08-24</h4>
+<h1 class="title toc-ignore">Lab 02 - Visualización</h1>
 
 </div>
 
@@ -1662,70 +1679,100 @@ Información</strong></h1>
 <div class="title-logo">
 
 </div>
-<p>Esta es la página del curso de Análisis y Explotación de la
-Información creado por <a href="http://roinaveiro.github.io">Roi
-Naveiro</a></p>
-<div id="contenido" class="section level2">
-<h2><strong>Contenido</strong></h2>
-<div id="tema-0-introducción" class="section level3">
-<h3>Tema 0 : Introducción</h3>
+<div id="ejercicio-1" class="section level2">
+<h2>Ejercicio 1</h2>
+<p>Utilizando los datos de la librería <code>gapminder</code>:</p>
 <ul>
-<li><a href="./tema0/tema0.html">Diapositivas</a></li>
+<li><p>Filtra las obserevaciones correspondientes a los años 1957, 1967,
+1977, 1987, 1997, 2007</p></li>
+<li><p>Representa la relación entre PIB per cápita y esperanza de vida
+por continentes y por años en diferentes gráficas usando
+<strong>faceting</strong>. El tamaño de los puntos ha de ser
+proporcional a la población. El color debe reflejar el
+continente.</p></li>
+<li><p>¿Qué conlusiones extraes?</p></li>
 </ul>
 </div>
-<div id="tema-1-programación-en-r" class="section level3">
-<h3>Tema 1 : Programación en R</h3>
+<div id="ejercicio-2" class="section level2">
+<h2>Ejercicio 2</h2>
+<p>La contaminación debida al consume de plástico es un problema global
+que afecta negativamente a la salud de diversos ecosistemas. <a href="https://ourworldindata.org/plastic-pollution">Our World in
+Data</a> contiene multitud de datos acerca de la evolución del consumo
+de plástico tanto a nivel global, como de país. Para este ejercicio nos
+centramos en los datos de 2010.</p>
+<p>Los datos se encuentran en la carpeta data del repositorio. Puedes
+cargarlos utilizando</p>
+<pre class="r"><code>library(tidyverse)
+plastic &lt;- read_csv(&quot;data/plastic-waste.csv&quot;)</code></pre>
+<p>Las variables son las siguientes</p>
 <ul>
-<li><a href="./tema1/tema1.html">Diapositivas</a></li>
+<li><code>code</code>: Código de país (3 letras)</li>
+<li><code>entity</code>: Nombre completo del país</li>
+<li><code>continent</code>: Nombre del continente</li>
+<li><code>year</code>: Año</li>
+<li><code>gdp_per_cap</code>: PIB per cápita (2011) en dólares
+internacionales</li>
+<li><code>plastic_waste_per_cap</code>: Cantidad de residuos per capita
+de plástico en kg/día</li>
+<li><code>mismanaged_plastic_waste_per_cap</code>: Cantidad de residuos
+de plástico mal gestionados en kg/día</li>
+<li><code>mismanaged_plastic_waste</code>: Toneladas de residuos de
+plástico mal gestionados</li>
+<li><code>coastal_pop</code>: Número de individuos que viven en o cerca
+de la cosa</li>
+<li><code>total_pop</code>: Población total</li>
 </ul>
+<p>Visualiza la distribución de la cantidad de residuos de plástico per
+cápita (en 2010).</p>
+<p>¿Existe algún valor atípico? Si es así, determina qué países son
+atípicos. Trata de mostrar si son o no datos erróneos (investigando en
+internet).</p>
+<p>Nota: Para el resto de ejercicios, filtra los datos atípicos si los
+hubiera.</p>
 </div>
-<div id="tema-2-análisis-exploratorio-de-los-datos" class="section level3">
-<h3>Tema 2 : Análisis Exploratorio de los Datos</h3>
-<ul>
-<li>2.1: Visualización de datos
-<ul>
-<li><a href="./tema2/tema2-1.html">Diapositivas</a></li>
-</ul></li>
-<li>2.2: Transformación de datos
-<ul>
-<li><a href="./tema2/tema2-2.html">Diapositivas</a></li>
-</ul></li>
-<li>2.3: Análisis Exploratorio de datos
-<ul>
-<li><a href="./tema2/tema2-3.html">Diapositivas</a></li>
-</ul></li>
-</ul>
+<div id="ejercicio-3" class="section level2">
+<h2>Ejercicio 3</h2>
+<p>Visualiza la distribución de la cantidad de residuos de plástico per
+capita por continente, usando distintos histogramas para cada
+continente.</p>
 </div>
-<div id="tema-3-data-wrangling" class="section level3">
-<h3>Tema 3 : Data Wrangling</h3>
-<ul>
-<li>3.1: Importación de datos
-<ul>
-<li><a href="./tema3/tema3-1.html">Diapositivas</a></li>
-</ul></li>
-</ul>
+<div id="ejercicio-4" class="section level2">
+<h2>Ejercicio 4</h2>
+<p>Repite la gráfica anterior usando densidad, incluyendo todos los
+continentes en la misma gráfica indicándolos con distintos colores.</p>
 </div>
+<div id="ejercicio-5" class="section level2">
+<h2>Ejercicio 5</h2>
+<p>Mejora la gráfica anterior pintando cada curva de un color y
+añadiendo transparencia.</p>
 </div>
-<div id="laboratorios" class="section level2">
-<h2><strong>Laboratorios</strong></h2>
-<div id="lab-01---programación-en-r" class="section level3">
-<h3>Lab 01 - Programación en R</h3>
-<ul>
-<li><a href="./labs/lab1.html">Ejercicios</a></li>
-</ul>
+<div id="ejercicio-6" class="section level2">
+<h2>Ejercicio 6</h2>
+<p>Elabora una visualización alternativa a la anterior que permita
+comparar la distribución de cantida de residuos de plástico per cápita
+de diferentes continentes.</p>
 </div>
-<div id="lab-02---visualización" class="section level3">
-<h3>Lab 02 - Visualización</h3>
-<ul>
-<li><a href="./labs/lab2.html">Ejercicios</a></li>
-</ul>
+<div id="ejercicio-7" class="section level2">
+<h2>Ejercicio 7</h2>
+<p>Investiga qué son las <a href="http://ggplot2.tidyverse.org/reference/geom_violin.html">gráficas
+violín</a>. Construye la gráfica de violín de los datos anteriores. ¿Qué
+revelan estas gráficas que un boxplot no revela?</p>
+<p>¿Observas algún patrón que distinga la distribución de la cantidad de
+residuos de plástico de continentes desarrolladas y en vías de
+desarrollo?</p>
 </div>
-<div id="lab-03---transformación" class="section level3">
-<h3>Lab 03 - Transformación</h3>
-<ul>
-<li><a href="./labs/lab2.html">Ejercicios</a></li>
-</ul>
+<div id="ejercicio-8" class="section level2">
+<h2>Ejercicio 8</h2>
+<p>Visualiza la relación entre cantidad de residuos de plástico per
+cápita y PIB per cápita. Pinta cada continente con un color y añade un
+único smoothing que muestre la tendencia global. Además, usa la escal de
+colores. ¿Cómo describirías esta relación?</p>
 </div>
+<div id="ejercicio-9" class="section level2">
+<h2>Ejercicio 9</h2>
+<p>Repite la gráfica anterior pero únicamente incluyendo los datos de
+Europa (obviamente sin utilizar colores). ¿Qué tendencia observas? ¿Qué
+países consumen menos plástico de lo implicado por esta tendencia?</p>
 </div>
 
 

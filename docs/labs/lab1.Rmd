@@ -1,0 +1,56 @@
+---
+title: "Lab 01 - Programación en R"
+output:
+  html_document:
+    css: ./ds_labs.css
+    toc: yes
+    toc_float: yes
+    fig_caption: no
+    seal : False
+    includes:
+      after_body: insert-logo.html
+  pdf_document:
+    toc: yes
+---
+
+
+<div class="title-logo"></div>
+
+```{r packages_setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+knitr::opts_chunk$set(fig.width=8, fig.height=6) 
+```
+
+
+## Ejercicio 1
+
+Escribe una función que devuelva $k$ números, donde cada número es
+la suma de $n$ números escogidos al azar entre 1 y 100 (con reemplazamiento), divido entre n.
+
+Pinta un histograma con los resultados de $k=10000$ para $n=1$, $n=2$, $n=10$ y $n=100$.
+Pista: puedes usar la función `hist()`.
+
+¿Qué observas?
+
+
+## Ejercicio 2
+
+Utiliza la ayuda de la función `replicate()` para conocer su funcionamiento.
+Resuelve el Ejercicio 1 sin usar un bucle (si es que lo habías usado).
+
+
+## Ejercicio 3
+
+La base de datos `mtcars` de R contiene información extraída de la *1974 Motor Trend US magazine* acerca de 10 aspectos de diseño de rendimiento de 32 vehículos. 
+Usando esta base de datos, calcula 
+
+**Pregunta 1.** La diferencia entre el consumo medio de los vehículos de transmisión automática y los de transmisión manual.
+
+**Pregunta 2.** La misma diferencia pero únicamente para vehículos de más de 3000 lbs.
+
+Pista: la ayuda ?mtcars te puede ser útil
+
+## Ejercicio 4
+
+Utilizando un bucle `for` y un `if`, suma los números pares entre 1 y 100 (ambos incluidos).
+

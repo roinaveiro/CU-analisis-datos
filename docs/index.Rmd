@@ -30,19 +30,33 @@ Esta es la página del curso de Análisis y Explotación de la Información crea
 ## **Contenido**
 
 ### Tema 0 : Introducción
-
   - [Diapositivas](./tema0/tema0.html)
   
 ### Tema 1 : Programación en R
-
   - [Diapositivas](./tema1/tema1.html)
   
 ### Tema 2 : Análisis Exploratorio de los Datos
-
 - 2.1: Visualización de datos
   - [Diapositivas](./tema2/tema2-1.html)
     
 - 2.2: Transformación de datos
   - [Diapositivas](./tema2/tema2-2.html)
 
+- 2.3: Análisis Exploratorio de datos
+  - [Diapositivas](./tema2/tema2-3.html)
+  
+### Tema 3 : Data Wrangling
+  - 3.1: Importación de datos
+    - [Diapositivas](./tema3/tema3-1.html)
+    
+## **Laboratorios**
+
+### Lab 01 - Programación en R 
+  - [Ejercicios](./labs/lab1.html)
+    
+### Lab 02 - Visualización 
+  - [Ejercicios](./labs/lab2.html)
+    
+### Lab 03 - Transformación
+  - [Ejercicios](./labs/lab2.html)
    
