@@ -250,61 +250,33 @@ Aprenderemos las herramientas fundamentales de R para las distintas fases de est
 
 6. **Modelización**: confirmar hipótesis, responder preguntas.
 
---
+7. **Comuniación**: comunicar resultados
+
+---
+## Las fases de un proyecto de análisis de datos
+
+
+- 1,2,3 $\rightarrow$ Data Wrangling
+- 4,5 $\rightarrow$ Data exploration
+- 5 $\rightarrow$ Modelización
+- 6 $\rightarrow$ Comunicación
+
 
 Todo esto usando el **lenguaje de programación R**.
 
 ---
 
-## Tema 1 - Programación  en R
+## Programa
 
-- Introducción
+- Tema 1 - Programación en R
 
-- Funciones
+- Tema 2 - Análisis Exploratorio de los Datos
 
-- Paquetes y ayudas
+- Tema 3 - Data Wrangling
 
-- Tipos de objetos de R
+- Tema 4 - Modelización
 
-- Selección y modificación de valores en objetos de R
-
-- Bucles y condicionales
-
-
----
-
-## Tema 2 - Análisis Exploratorio de los Datos
-
-- Visualización de datos
-
-- Transformación de datos
-
-- Análisis Exploratorio
-
-- Estudios observacionales vs Experimentales. Ética de datos
-
----
-
-## Tema 3 - Data Wrangling
-
-
-- Importación de datos
-
-- Organización de datos
-
-- Transformación de datos
-
----
-
-
-## Tema 4 - Modelización
-
-- TBD
-
----
-
-## Tema 5 - Comunicación de resultados y ética de los datos
-- TBD
+- Tema 5 - Comunicación de resultados 
 
 
 ---
@@ -324,15 +296,42 @@ knitr::include_graphics("img/r-rstudio.png")
 
 [Instalación de R y RStudio](https://rstudio-education.github.io/hopr/starting.html)
 
+
+---
+
+## Presentación
+
+* Análisis de Datos 1º MAT - 1º ECOMAT
+
+* Profesor: Roi Naveiro
+
+* Email: roi.naveiro@cunef.edu
+
+* Web del curso: [https://roinaveiro.github.io/CU-estadistica/](https://roinaveiro.github.io/CU-estadistica/)
+
+---
+
+## Horario
+
+* *Horario clases*: 
+
+  - Lunes 15.30 - 16.30
+  - Jueves 16.30 - 18.00
+  - Viernes 16.30 - 18.00
+
+* *Asistencia:* Obligatoria, al menos 80%
 ---
 
 ## Evaluación
 
-* 20%
+* **Convocatoria Ordinaria**
 
-* 20%
+  - Evaluación contínua: Examen  1: 20%
+  - Evaluación contínua: Examen  2: 20%
+  - Examen Ordinario Final: 60% (toda la materia)
+  
+* **Convocatoria Extraordinaria**: Examen Extraordinario Final (60%) + Evaluación contínua
 
-* 60%
 
 ---
 
