@@ -1,6 +1,6 @@
 ---
-title: ""
-author: ""
+title: "Tema 1"
+author: "Roi Naveiro"
 date: ""
 output: 
    xaringan::moon_reader:
@@ -27,7 +27,7 @@ class: center, middle, inverse, title-slide
 
 <div class="title-logo"></div>
 
-# Análisis y Explotación de la Información
+# Análisis de Datos
 
 ## Tema 1 - Programación en R
 

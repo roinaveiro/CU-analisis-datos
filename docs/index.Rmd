@@ -1,5 +1,5 @@
 ---
-title: "**Análisis y Explotación de la Información**"
+title: "**Análisis de Datos**"
 subtitle: "CUNEF Universidad"
 date: "Página actualizada: `r format.Date(file.mtime('index.Rmd'),'%Y-%m-%d')`"
 output:
@@ -24,7 +24,7 @@ knitr::opts_chunk$set(fig.width=8, fig.height=6)
 ```
 
 
-Esta es la página del curso de Análisis y Explotación de la Información creado por
+Esta es la página del curso de Análisis de Datos creado por
 [Roi Naveiro](http://roinaveiro.github.io)
 
 ## **Contenido**

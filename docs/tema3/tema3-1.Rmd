@@ -27,10 +27,11 @@ class: center, middle, inverse, title-slide
 
 <div class="title-logo"></div>
 
-# Análisis y Explotación de la Información
-
+# Análisis de Datos
+ 
 ## Tema 3 - Data Wrangling
 
+### 3.1 Importación de Datos
 <br>
 <br>
 .pull-left[
