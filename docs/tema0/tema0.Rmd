@@ -301,7 +301,7 @@ knitr::include_graphics("img/r-rstudio.png")
 
 ## Presentación
 
-* Análisis de Datos 1º MAT - 1º ECOMAT
+* Análisis de Datos ECO-A
 
 * Profesor: Roi Naveiro
 
