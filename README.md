@@ -1,1 +1,1 @@
-# CU-analisis-explotacion-informacion
+# Repositorio Asignatura Análisis de Datos
