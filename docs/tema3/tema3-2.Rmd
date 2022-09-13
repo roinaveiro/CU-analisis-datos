@@ -1,0 +1,293 @@
+---
+title: "Tema 3.2"
+author: "Roi Naveiro"
+date: ""
+output: 
+   xaringan::moon_reader:
+    css: "ds_slides.css"
+    lib_dir: libs
+    seal: false
+    includes:
+      after_body: insert-logo.html
+    nature: 
+      highlightLines: true
+      highlightStyle: github
+      countIncrementalSlides: false
+      slideNumberFormat: "%current%"  
+---
+
+
+
+```{r packages_setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+knitr::opts_chunk$set(fig.width=8, fig.height=6) 
+```
+
+class: center, middle, inverse, title-slide
+
+<div class="title-logo"></div>
+
+# Análisis de Datos
+ 
+## Tema 3 - Data Wrangling
+
+### 3.1 Organización de Datos
+<br>
+<br>
+.pull-left[
+### Roi Naveiro
+]
+---
+
+
+## Data Wrangling
+
+**Objetivo**: dejar los datos listos para su posterior **exploración** y **modelización**
+
+Convertir **datos crudos** en **datos procesados**
+
+**Datos crudos**
+
+  - Los datos tal cual aparecen en la fuente de origen
+  
+  - No han sufrido ninguna manipulación
+  
+**Datos procesados**
+
+  - Cada variable es una columna
+  
+  - Cada observación una fila
+  
+  - Cada unidad observacional es una celda
+  
+  - Datos más complejos, en varias tablas interconectadas
+  
+---
+## Data Wrangling
+
+* Importación de los datos
+* Organización de los datos
+* Transformación de los datos
+
+```{r, echo=FALSE, out.width = '100%',  fig.align='center'}
+knitr::include_graphics("img/data-science-wrangle.png")
+library(tidyverse)
+```
+
+
+---
+class: center, middle, inverse
+
+# Organización de datos
+
+---
+
+# Datos Organizados
+
+* Aprenderemos forma consistente de organizar los datos en R
+
+* Lo haremos a través del paquete `tidyr` del universo `tidyverse`
+
+---
+# Datos Organizados
+
+* Los mismos datos pueden representarse de múltiples formas
+* En el siguiente ejemplo presentamos los valores de cuatro variables (*country, year, population, cases*) de cuatro formas distintas
+
+```{r}
+table1
+```
+
+---
+# Datos Organizados
+
+* Los mismos datos pueden representarse de múltiples formas
+* En el siguiente ejemplo presentamos los valores de cuatro variables (*country, year, population, cases*) de cuatro formas distintas
+
+```{r}
+table2
+```
+
+---
+# Datos Organizados
+
+* Los mismos datos pueden representarse de múltiples formas
+* En el siguiente ejemplo presentamos los valores de cuatro variables (*country, year, population, cases*) de cuatro formas distintas
+
+```{r}
+table3
+```
+
+---
+# Datos Organizados
+
+* Los mismos datos pueden representarse de múltiples formas
+* En el siguiente ejemplo presentamos los valores de cuatro variables (*country, year, population, cases*) de cuatro formas distintas
+
+```{r}
+table4a
+table4b
+```
+---
+# Datos Organizados
+
+* Solo uno está **organizado**
+
+* Hablamos de datos organizados si:
+
+  - Cada variable corresponde a una columna
+  - Cada fila a un observación
+  - Cada celda a un valor
+  
+```{r, echo=FALSE, out.width = '80%',  fig.align='center'}
+knitr::include_graphics("img/tidy.png")
+```
+
+---
+# Datos Organizados 
+
+* La principal ventaja es poder utilizar las herramientas de R que, usualmente, trabajan sobre vectores de valores.
+
+```{r}
+table1 %>% mutate(rate = 10000 * cases / population)
+```
+
+---
+# Datos Organizados 
+
+* La mayoría de datos que recibimos, no están organizados.
+
+* Primer paso: determinar qué son las variables y qué son las observaciones. ¿Ejemplos?
+
+* Segundo paso: resolver uno de estos problemas
+
+  - Una variable está dispersa por varias columnas
+  - Una observación está dispersa por múltiples filas
+  
+* Esto se resuelve con `pivot_longer()` y `pivot_wider()`
+
+---
+# `pivot_longer()`
+
+* Nombres de columnas son valores de variable
+
+```{r}
+table4a
+```
+
+---
+# `pivot_longer()`
+
+* Necesitamos **pivotar** estas columnas a un nuevo par de variables. Para ello, debemos conocer:
+
+  - El conjunto de columnas a pivotar
+  - El nombre de la variable recibirá las columnas: `year`
+  - El nombre de la variable que recibirá los valores: `cases`
+
+---
+# `pivot_longer()`
+
+```{r}
+table4a %>% pivot_longer(c(`1999`, `2000`), 
+                         names_to = "year", values_to = "cases")
+```
+---
+# `pivot_longer()`
+
+Usa `pivot_longer()` para ordenar el dataset `table4b`
+
+---
+# `pivot_wider()`
+
+* Se utiliza cuando tenemos una observación dispersa en filas
+
+* En el siguiente dataset, cada observación es un país en un año
+
+* Cada una ocupa dos filas
+
+```{r}
+table2
+```
+---
+# `pivot_wider()`
+
+Para ordenar, necesitamos:
+
+- La columna de la que extraeremos los nombres de las nuevas variables: `type`
+
+- La columna de la que extraeremos sus valores: `count`
+
+---
+# `pivot_wider()`
+
+```{r}
+table2 %>% 
+  pivot_wider(names_from = type, values_from = count)
+```
+
+# Organizar datos
+
+* `pivot_longer`: elimina columnas y añade filas, hace los datos más largos.
+
+* `pivot_wider`: elimina filas y añade columnas, hace los datos más anchos.
+
+---
+# Separar y unir columnas
+
+* A veces, una misma columna contiene información acerca de dos variables.
+
+* Se puede separar en dos columnas utilizando `separate()`
+
+```{r}
+table3
+```
+---
+# Separar y unir columnas
+
+```{r}
+table3 %>% separate(rate, into = c("cases", "population"))
+```
+---
+# Separar y unir columnas
+
+* Por defecto, separa cuando encuentra carácter no alfanumérico.
+
+* Se puede especificar el caracter.
+
+```{r}
+table3 %>% separate(rate, into = c("cases", "population"), sep = "/")
+```
+
+---
+# Separar y unir columnas
+
+* Además, conviene convertir el tipo de columna, de lo contrario será de tipo string.
+
+```{r}
+table3 %>% separate(rate, into = c("cases", "population"), convert = TRUE)
+```
+---
+# Separar y unir columnas
+
+* Se puede separar usando enteros
+
+```{r}
+table5 <- 
+  table3 %>% separate(year, into = c("century", "year"), sep = 2)
+```
+
+---
+# Separar y unir columnas
+
+* `unite()` hace lo contrario que `separate()`: combina columnas
+* Toma como argumentos:  nueva variable, conjunto de columnas a juntar y `sep`
+
+```{r}
+table5 %>% unite(new, century, year, sep = "")
+```
+
+---
+
+## Bibliografía
+
+Este tema está fundamentalmente basado en  [R for Data Science](https://r4ds.had.co.nz/), Wickham and Grolemund (2016)
