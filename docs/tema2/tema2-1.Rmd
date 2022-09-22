@@ -706,7 +706,7 @@ class: center, middle
 ---
 ## Visualización de datos univariantes categóricos
 
-Gráfico de barras de la medida de claridad
+Gráfico de barras 
 ```{r}
 ggplot(gapminder67, mapping = aes(x = continent)) + 
   geom_bar() #<<
@@ -779,7 +779,7 @@ Los gráficos como histogramas, gráficos de barras o boxplots realizan transfor
 
 * Smoothers: ajustan un modelo y representan predicciones generadas por el mismo
 
-* Boxplots: claculan un resumen de la distribución y lo pintan en determinado formato
+* Boxplots: calculan un resumen de la distribución y lo pintan en determinado formato
 
 El argumento para especificar el estadistico de resumen es  `stat`. Puedes ver su valor por defect en, e.g. `?geom_bar`
 

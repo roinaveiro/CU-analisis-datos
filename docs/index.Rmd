@@ -58,5 +58,5 @@ Esta es la página del curso de Análisis de Datos creado por
   - [Ejercicios](./labs/lab2.html)
     
 ### Lab 03 - Transformación
-  - [Ejercicios](./labs/lab2.html)
+  - [Ejercicios](./labs/lab3.html)
    
