@@ -106,3 +106,10 @@ Visualiza la relación entre cantidad de residuos de plástico per cápita y PIB
 Repite la gráfica anterior pero únicamente incluyendo los datos de Europa (obviamente sin utilizar colores).
 ¿Qué tendencia observas? ¿Qué países consumen menos plástico de lo implicado por esta tendencia?
 
+
+## Ejercicio 10
+
+Visualiza la relación entre los residuos de plástico per cápita y los residuos mal gestionados per cápita.
+Pinta cada continente de un color.
+¿Cambia la asociación de estas dos variables entre continentes?
+
