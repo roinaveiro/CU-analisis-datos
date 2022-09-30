@@ -79,12 +79,12 @@ Repite la gráfica anterior usando densidad, incluyendo todos los continentes en
 
 ## Ejercicio 5
 
-Mejora la gráfica anterior pintando cada curva de un color y añadiendo transparencia.
+Mejora la gráfica anterior rellenando cada curva de un color y añadiendo transparencia.
 
 
 ## Ejercicio 6
 
-Elabora una visualización alternativa a la anterior que permita comparar la distribución de cantida de residuos de plástico per cápita de diferentes continentes.
+Elabora una visualización alternativa a la anterior que permita comparar la distribución de cantidad de residuos de plástico per cápita de diferentes continentes.
 
 
 ## Ejercicio 7
@@ -97,7 +97,7 @@ Construye la gráfica de violín de los datos anteriores. ¿Qué revelan estas g
 
 ## Ejercicio 8
 
-Visualiza la relación entre cantidad de residuos de plástico per cápita y PIB per cápita. Pinta cada continente con un color y añade un único smoothing que muestre la tendencia global. Además, usa la escal de colores.
+Visualiza la relación entre cantidad de residuos de plástico per cápita y PIB per cápita. Pinta cada continente con un color y añade un **único smoothing** que muestre la tendencia global. Además, usa la escala de colores vidris (investiga en internet cómo utilizarla).
 ¿Cómo describirías esta relación? 
 
 
