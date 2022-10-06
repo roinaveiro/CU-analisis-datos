@@ -758,7 +758,7 @@ NA == NA
 
 ## Valores ausentes
 
-* En el filtrado, solo se incluyen filas con valores `TRUE` de la condición (se incluyen pues los `FALSE` y los `NA`).
+* En el filtrado, solo se incluyen filas con valores `TRUE` de la condición (se excluyen pues los `FALSE` y los `NA`).
 
 * Es fácil preservarlos
 
@@ -1034,6 +1034,47 @@ gapminder %&gt;%
 ##  8 Americas             70     3 0.0211
 ##  9 Asia                 30     2 0.0141
 ## 10 Asia                 40    10 0.0704
+```
+
+---
+## Reto
+
+Calcula la proporción de gente en cada continente, que en el año 1967 tenía esperanza de vida entre 
+0-10, 10-20, 20-30, etc.
+--
+
+
+```r
+gapminder %&gt;%
+  mutate(lifeExpDecade = case_when(lifeExp &gt;= 20 &amp; lifeExp&lt; 30 ~ '20',
+          lifeExp &gt;= 30 &amp; lifeExp&lt; 40 ~ '30',
+          lifeExp &gt;= 40 &amp; lifeExp&lt; 50 ~ '40',
+          lifeExp &gt;= 50 &amp; lifeExp&lt; 60 ~ '50',
+          lifeExp &gt;= 60 &amp; lifeExp&lt; 70 ~ '60',
+          lifeExp &gt;= 70 &amp; lifeExp&lt; 80 ~ '70',
+          lifeExp &gt;= 80 &amp; lifeExp&lt; 90 ~ '80',
+          lifeExp &gt;= 90 &amp; lifeExp&lt; 100 ~ '90',
+          TRUE ~ '&gt;100'
+          )) %&gt;%
+  filter(year == 1967) %&gt;%
+  count(continent, lifeExpDecade) %&gt;%
+  mutate(prop = n / sum(n)) %&gt;% slice(1:10)
+```
+
+```
+## # A tibble: 10 × 4
+##    continent lifeExpDecade     n   prop
+##    &lt;fct&gt;     &lt;chr&gt;         &lt;int&gt;  &lt;dbl&gt;
+##  1 Africa    30               10 0.0704
+##  2 Africa    40               29 0.204 
+##  3 Africa    50               11 0.0775
+##  4 Africa    60                2 0.0141
+##  5 Americas  40                2 0.0141
+##  6 Americas  50                9 0.0634
+##  7 Americas  60               11 0.0775
+##  8 Americas  70                3 0.0211
+##  9 Asia      30                2 0.0141
+## 10 Asia      40               10 0.0704
 ```
 
 

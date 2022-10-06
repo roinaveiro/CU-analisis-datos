@@ -495,7 +495,7 @@ NA == NA
 
 ## Valores ausentes
 
-* En el filtrado, solo se incluyen filas con valores `TRUE` de la condición (se incluyen pues los `FALSE` y los `NA`).
+* En el filtrado, solo se incluyen filas con valores `TRUE` de la condición (se excluyen pues los `FALSE` y los `NA`).
 
 * Es fácil preservarlos
 
@@ -629,6 +629,33 @@ gapminder %>%
   filter(year == 1967) %>%
   count(continent, lifeExpDecade) %>%
   mutate(prop = n / sum(n)) %>% slice(1:10)
+```
+
+---
+## Reto
+
+Calcula la proporción de gente en cada continente, que en el año 1967 tenía esperanza de vida entre 
+0-10, 10-20, 20-30, etc.
+--
+
+```{r}
+
+gapminder %>%
+  mutate(lifeExpDecade = case_when(lifeExp >= 20 & lifeExp< 30 ~ '20',
+          lifeExp >= 30 & lifeExp< 40 ~ '30',
+          lifeExp >= 40 & lifeExp< 50 ~ '40',
+          lifeExp >= 50 & lifeExp< 60 ~ '50',
+          lifeExp >= 60 & lifeExp< 70 ~ '60',
+          lifeExp >= 70 & lifeExp< 80 ~ '70',
+          lifeExp >= 80 & lifeExp< 90 ~ '80',
+          lifeExp >= 90 & lifeExp< 100 ~ '90',
+          TRUE ~ '>100'
+          )) %>%
+  filter(year == 1967) %>%
+  count(continent, lifeExpDecade) %>%
+  mutate(prop = n / sum(n)) %>% slice(1:10)
+
+
 ```
 
 
