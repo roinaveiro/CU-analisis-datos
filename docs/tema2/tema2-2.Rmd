@@ -619,7 +619,7 @@ cumsum(x)
 ---
 ## Reto
 
-Calcula la proporción de gente en cada continente, que en el año 1967 tenía esperanza de vida entre 
+Calcula la proporción de países en cada continente, que en el año 1967 tenía esperanza de vida entre 
 0-10, 10-20, 20-30, etc.
 --
 
@@ -628,7 +628,8 @@ gapminder %>%
   mutate(lifeExpDecade = lifeExp - lifeExp%%10) %>%
   filter(year == 1967) %>%
   count(continent, lifeExpDecade) %>%
-  mutate(prop = n / sum(n)) %>% slice(1:10)
+  group_by(continent) %>%
+  mutate(prop = n / sum(n)) 
 ```
 
 ---
@@ -653,7 +654,8 @@ gapminder %>%
           )) %>%
   filter(year == 1967) %>%
   count(continent, lifeExpDecade) %>%
-  mutate(prop = n / sum(n)) %>% slice(1:10)
+  group_by(continent) %>%
+  mutate(prop = n / sum(n)) 
 
 
 ```
