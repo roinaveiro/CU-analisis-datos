@@ -235,6 +235,23 @@ head(iris_df)
 ```
 
 ---
+## Leer JSON
+
+
+```{r, echo=FALSE, out.width = '70%',  fig.align='center'}
+knitr::include_graphics("img/json.png")
+```
+
+---
+## Leer JSON
+```{r}
+library(jsonlite)
+
+# La función prettify nos imprime el JSON de forma limpia
+prettify(iris_JSON)
+```
+
+---
 class: center, middle, inverse
 
 # Importación de datos: Lectura de ficheros con paquetes de tidyverse
