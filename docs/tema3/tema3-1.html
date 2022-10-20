@@ -1867,6 +1867,53 @@ parse_date("01/04/22", "%d/%m/%y")
 ```
 
 [Más información sobre los formatos](https://readr.tidyverse.org/reference/parse_datetime.html)
+
+---
+## Tipos de parseadores - Fechas y horas
+
+- **Año**
+
+:   `%Y` (4 dígitos).
+
+:   `%y` (2 dígitos); 00-69 -\&gt; 2000-2069, 70-99 -\&gt; 1970-1999.
+
+- **Mes**
+
+:   `%m` (2 dígitos).
+
+:   `%b` (nombre abreviado, como "Jan").
+
+:   `%B` (nombre completo, "January").
+
+- **Día**
+
+:   `%d` (2 dígitos).
+
+:   `%e` (espacio opcional).
+
+---
+## Tipos de parseadores - Fechas y horas
+
+- **Tiempo**
+
+:   `%H` 0-23 horas
+
+:   `%I` 0-12, usar con `%p`.
+
+:   `%p` AM/PM
+
+:   `%M` minutos
+
+:   `%S` segundos, número entero.
+
+:   `%OS` rsegundos reales.
+
+:   `%Z` Franja horaria (e.g. `America/Chicago`).
+
+
+:   `%z` (como offset de UTC, e.g. `+0800`).
+
+
 ---
 ## Parsear un fichero
 
