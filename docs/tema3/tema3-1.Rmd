@@ -501,7 +501,7 @@ parse_factor(c("hombre", "mujer", "mujer", "unicornio"), levels=c("hombre", "muj
 parse_datetime("2022-01-01T1015")
 ```
 
-`parse_datetime()` para fecha. Espera, en este orden, año, mes, dia, separados por `-` o `/`
+`parse_date()` para fecha. Espera, en este orden, año, mes, dia, separados por `-` o `/`
 ```{r}
 parse_date("2022/01/01")
 ```
