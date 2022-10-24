@@ -1,0 +1,84 @@
+---
+title: "Lab 04 - Importación de datos"
+output:
+  html_document:
+    css: ./ds_labs.css
+    toc: yes
+    toc_float: yes
+    fig_caption: no
+    seal : False
+    includes:
+      after_body: insert-logo.html
+  pdf_document:
+    toc: yes
+---
+
+
+<div class="title-logo"></div>
+
+```{r packages_setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = T, warning = F, message = F)
+knitr::opts_chunk$set(fig.width=8, fig.height=6) 
+```
+
+
+```{r}
+library(tidyverse)
+```
+
+## Ejercicio 1
+
+Simula la lectura de un conjunto de datos escritos en csv que contenga cuatro variables:
+nombre, edad, género y fumador (con valores posibles si/no), y dos observaciones la tuya y la de 
+un amigo/a. Incluye una línea de metadatos al principio con un comentario que describa los datos.
+Por ejemplo:
+
+
+```{r, eval=FALSE}
+datos <- "# Datos de Becky y Roi
+nombre,edad,genero,fuma
+Roi,29,hombre,no
+Becky,26,mujer,si"
+```
+
+
+Lee los datos en un tibble. A continuación, guárdalos en formato csv dentro de una carpeta que se llama `data`.
+Una vez guardados, vuelve a leerlos (esta vez desde el fichero).
+Finalmente, guárdalos de nuevo en formato excell.
+
+
+### Solución
+
+### Ejercicio 2
+
+Parsea cada una de estas fechas/horas
+
+```{r}
+d1 <- "January 01, 2010"
+d2 <- "2015-Mar-07"
+d3 <- "06-Jun-2017"
+d4 <- c("August 19 (2015)", "July 1 (2015)")
+d5 <- "12/30/14" # Dec 30, 2014
+t1 <- "1705"
+t2 <- "11:15:10.12 PM"
+```
+
+
+### Solución
+
+
+## Ejercicio 3
+
+¿Qué está mal en cada uno de estos códigos? ¿Qué están haciendo?
+
+
+```{r, eval=FALSE}
+read_csv("a,b\n1,2,3\n4,5,6")
+read_csv("a,b,c\n1,2\n1,2,3,4")
+read_csv("a,b\n\"1")
+read_csv("a,b\n1,2\na,b")
+read_csv("a;b\n1;3")
+```
+
+### Solución
+
