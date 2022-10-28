@@ -62,4 +62,9 @@ Esta es la página del curso de Análisis de Datos creado por
   
 ### Lab 04 - Importación
   - [Ejercicios](./labs/lab4.html)
+  
+## **Exámenes**
+
+### Primer Parcial
+  - [Solución](./exams/sol_exam-01.html)
    
