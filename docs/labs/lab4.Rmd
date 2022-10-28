@@ -24,6 +24,7 @@ knitr::opts_chunk$set(fig.width=8, fig.height=6)
 
 ```{r}
 library(tidyverse)
+library(viridis)
 ```
 
 ## Ejercicio 1
@@ -47,9 +48,65 @@ Una vez guardados, vuelve a leerlos (esta vez desde el fichero).
 Finalmente, guárdalos de nuevo en formato excell.
 
 
+## Ejercicio 2
+
+Federal Reserve Economic Data (FRED) es una base de datos mantenida por la Reserva Federal de St. Louis (USA). Contiene casi un millón de series de datos en el tiempo que muestran la evolución de diferentes medidas económicas.
+
+Accede a la web de FRED [https://fred.stlouisfed.org/](https://fred.stlouisfed.org/). Exporta los datos sobre la evolución del IPC Mediano en csv (en inglés Median Consumer Price Index).
+Cárgalos en R y haz lo siguiente:
+
+* Representa gráficamente la evolución del IPC Mediano desde el año 2000.
+
+* ¿En qué fecha se alcanzó el máximo IPC Mediano? ¿Y el mínimo?
+
+
+
+
+## Ejercicio 3
+
+Our World in Data es una inicitiva de la Universidad de Oxford que pretende liberar datos
+acerca de múltiples fenómenos sociales. En particular ofrece resultados empíricos acerca del 
+cambio de condiciones de vida en el planeta a lo largo del tiempo. Los datos son de diversos ámbitos: económico, social, judicial, ecológico, etc.
+
+¿Cuántas veces has escuchado, en la cena de nochevieja, a un familiar decir: "en mis tiempos
+se vivía mejor, no había tanto paro!"? Bien, en esta práctica haremos uso de Our World in Data junto con R para que puedas rebatir esos comentarios con datos empíricos. 
+
+Lo primero que has de hacer es acceder a la página [https://ourworldindata.org/](https://ourworldindata.org/). Verás una pestaña que dice
+"Articles by Topic". Busca en esa pestaña un tópico de interés.
+Al seleccionarlo, llegarás a un artículo que, seguramente, contendrá alguna gráfica.
+En el gráfico aparecerá una pestaña Download, púlsala y descarga los datos en csv.
+
+Una vez descargados, cárgalos en R e intenta reproducir el gráfico que aparece en el artículo.
+
+Aquí os pongo un ejemplo con datos sobre la evolución del precio del gas en diferentes regiones.
+La gráfica es esta:
+[https://ourworldindata.org/grapher/natural-gas-prices](https://ourworldindata.org/grapher/natural-gas-prices).
+
+
 ### Solución
 
-### Ejercicio 2
+
+```{r}
+gp <- read_csv("data/natural-gas-prices.csv")
+```
+
+```{r}
+ggplot(gp, aes(x=Year, y=`Gas - Prices`, color=Entity)) + 
+  geom_line() + geom_point(size=0.4) + theme_bw() + 
+  labs(title="Natural gas prices", 
+       subtitle="Natural gas prices, measured in current US dollars per cubic meter.") + 
+  scale_color_viridis_d()
+  
+```
+
+## Ejercicio 4
+
+Busca en FRED algún dato de tu interés. Descárgalo en **excell**, impórtalo en R,
+construye una gráfica y extrae alguna conclusión.
+
+
+
+## Ejercicio 5
 
 Parsea cada una de estas fechas/horas
 
@@ -64,12 +121,11 @@ t2 <- "11:15:10.12 PM"
 ```
 
 
-### Solución
 
 
-## Ejercicio 3
+## Ejercicio 6
 
-¿Qué está mal en cada uno de estos códigos? ¿Qué están haciendo?
+¿Qué hace cada uno de estos códigos?
 
 
 ```{r, eval=FALSE}
@@ -80,5 +136,4 @@ read_csv("a,b\n1,2\na,b")
 read_csv("a;b\n1;3")
 ```
 
-### Solución
 
