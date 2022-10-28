@@ -66,5 +66,5 @@ Esta es la página del curso de Análisis de Datos creado por
 ## **Exámenes**
 
 ### Primer Parcial
-  - [Solución](./exams/sol_exam-01.html)
+  - [Solución](./exams/exam-01_sol.html)
    
