@@ -1,12 +1,12 @@
 library(rtweet)
 library(tidyverse)
 
-app_name <- "CUNEF_data_analysis"
+# auth_setup_default()
 
-auth_setup_default()
+auth <- rtweet_app()
+# auth <- rtweet_bot()
 
-# post a tweet from R
-post_tweet("Look, i'm tweeting from R in my #rstats #earthanalytics class! @EarthLabCU")
+post_tweet(status = "Hola")
 ## your tweet has been posted!
 
 
@@ -17,9 +17,9 @@ post_tweet("Look, i'm tweeting from R in my #rstats #earthanalytics class! @Eart
 # q: the query word that you want to look for
 # n: the number of tweets that you want returned. You can request up to a maximum of 18,000 tweets.
 
-brexit_tweets <- search_tweets(q = "#BREXIT",
+musk_tweets <- search_tweets(q = "Elon Musk",
                                n = 500)
 
 
-brexit_tweets %>% select(full_text) %>% slice(1:3)
+musk_tweets %>% select(full_text) %>% slice(1:3)
 
