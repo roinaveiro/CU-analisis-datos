@@ -192,6 +192,9 @@ table4a
 table4a %>% pivot_longer(c(`1999`, `2000`), 
                          names_to = "year", values_to = "cases")
 ```
+
+* Nótese que los años son nombres que no empiezan por letra y por tanto han de rodearse de tildes...
+
 ---
 # `pivot_longer()`
 
