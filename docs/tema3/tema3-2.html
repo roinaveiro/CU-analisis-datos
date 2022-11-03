@@ -4,7 +4,7 @@
     <title>Tema 3.2</title>
     <meta charset="utf-8" />
     <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -347,6 +347,8 @@ table2 %&gt;%
 ## 6 China        2000 213766 1280428583
 ```
 
+---
+
 # Organizar datos
 
 * `pivot_longer`: elimina columnas y añade filas, hace los datos más largos.
@@ -474,7 +476,151 @@ table5 %&gt;% unite(new, century, year, sep = "")
 ## 6 China       2000  213766/1280428583
 ```
 
+
 ---
+class: center, middle, inverse
+
+# Datos relacionales
+
+---
+# Datos relacionales
+
+* Generalmente, en análisis de datos se trabaja con más de una base de datos.
+
+* Una de las mayores fuentes de riqueza en análisis de datos surge del cruce de bbdd!
+
+* Hay que saber cómo enganchar diferentes tablas de datos.
+
+* Cuando los datos están repartidos en múltiples tablas, hablamos de **datos relacionales**
+
+---
+# Datos relacionales
+
+En `tidyverse`, existen tres familias de verbos para trabajar con datos relacionales:
+
+* **Mutating joins**: añaden nuevas variables a una tabla de datos, procedentes de observaciones coincidentes de otra tabla.
+
+* **Filtering joins**: filtran observaciones de una base de datos basándose en si coinciden o no con las observaciones de otra tabla.
+
+* **Set operations**: utilizan las observaciones como si fueran elementos de un conjunto.
+
+---
+# `nycflights13`
+
+Utilizaremos este conjunto de datos para aprender sobre datos relacionales. Contiene las siguientes tablas:
+
+* `airlines`:  Nombres de aerolíneas
+
+* `airports`: Información sobre cada aeropuerto
+
+* `planes`: Información sobre cada avión
+
+* `weather`: Información climática en cada aeropuerto de NYC a cada hora
+
+* `flights`: Información sobre todos los vuelos que partieron de NYC en 2013
+
+---
+# `nycflights13`
+
+&lt;img src="img/relations_NYC.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+# Keys (Llaves)
+
+* Son **variables** que se usan para conectar pares de tablas.
+
+* Conjunto de variables que identifican unívocamente una observación.
+
+* ¿Cuáles son las llaves de cada una de las tablas de datos de `nycflights13`?
+
+---
+# Keys (Llaves)
+
+Dos tipos de llaves:
+
+* Primary Key: identifica unívocamente una observación en su propia tabla.
+
+* Foreign Key: identifica unívocamente una observación en otra tabla.
+
+* ¿Ejemplo en `nycflights13`?
+
+---
+# Keys (Llaves)
+
+Una vez identificada una llave primaria, es útil comprobar que es correcta
+
+
+```r
+planes %&gt;% 
+  count(tailnum) %&gt;% 
+  filter(n &gt; 1)
+```
+
+```
+## # A tibble: 0 × 2
+## # … with 2 variables: tailnum &lt;chr&gt;, n &lt;int&gt;
+```
+
+
+
+```r
+weather %&gt;% 
+  count(year, month, day, hour, origin) %&gt;% 
+  filter(n &gt; 1)
+```
+
+```
+## # A tibble: 3 × 6
+##    year month   day  hour origin     n
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;int&gt;
+## 1  2013    11     3     1 EWR        2
+## 2  2013    11     3     1 JFK        2
+## 3  2013    11     3     1 LGA        2
+```
+
+---
+# Keys (Llaves)
+
+* A veces no existen llaves primarias! No hay una combinación de variables que identifique unívocamente cada observación.
+
+* Ejemplo, `flights`.
+
+Útil añadir una... **llave surrogada**
+
+
+```r
+flights_key &lt;- flights %&gt;% mutate(key = row_number())
+```
+
+
+
+```r
+flights_key %&gt;% 
+  count(key) %&gt;% 
+  filter(n &gt; 1)
+```
+
+```
+## # A tibble: 0 × 2
+## # … with 2 variables: key &lt;int&gt;, n &lt;int&gt;
+```
+
+---
+# Keys (Llaves)
+
+* Una *primary key* y su *foreign key* en otra table forman una **relación**.
+
+* Usualmente las relaciones son 1 a varios.
+
+* Ejemplo: cada vuelo tiene un único avión, pero cada avión realiza muchos vuelos.
+
+---
+
+# To be continued...
+
+
+---
+
 
 ## Bibliografía
 

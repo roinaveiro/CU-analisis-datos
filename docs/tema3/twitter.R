@@ -6,7 +6,7 @@ library(tidyverse)
 auth <- rtweet_app()
 # auth <- rtweet_bot()
 
-post_tweet(status = "Hola")
+post_tweet(status = "Este tweet ha sido publicado por R")
 ## your tweet has been posted!
 
 
@@ -17,7 +17,7 @@ post_tweet(status = "Hola")
 # q: the query word that you want to look for
 # n: the number of tweets that you want returned. You can request up to a maximum of 18,000 tweets.
 
-musk_tweets <- search_tweets(q = "Elon Musk",
+musk_tweets <- search_tweets(q = "Russia",
                                n = 500)
 
 
