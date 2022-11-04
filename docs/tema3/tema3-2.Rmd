@@ -668,14 +668,6 @@ flights2 %>%
   left_join(airports, c("dest" = "faa"))
 ```
 
---- 
-
-# Ejercicio
-
-¿Cuáles son los nombres completos de los aeropuertos de destino con el retraso medio
-más alto? Presenta una tabla con dos columnas, una con nombre completo y 
-la otra con el retraso medio.
-
 
 ---
 # Ejercicio
@@ -684,6 +676,14 @@ la otra con el retraso medio.
 `flights`?
 
 Pista: usa las ayudas para entender cada uno de los datos
+
+--- 
+# Ejercicio
+
+¿Cuáles son los nombres completos de los aeropuertos de destino con el retraso medio
+más alto? Presenta una tabla con dos columnas, una con nombre completo y 
+la otra con el retraso medio.
+
 
 ---
 # Mutating joins
