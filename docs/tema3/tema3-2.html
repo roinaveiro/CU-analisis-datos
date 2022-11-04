@@ -23,7 +23,7 @@ class: center, middle, inverse, title-slide
  
 ## Tema 3 - Data Wrangling
 
-### 3.1 Organización de Datos
+### 3.2 Organización de Datos
 &lt;br&gt;
 &lt;br&gt;
 .pull-left[
@@ -618,13 +618,383 @@ flights_key %&gt;%
 * Ejemplo: cada vuelo tiene un único avión, pero cada avión realiza muchos vuelos.
 
 ---
+class: center, middle, inverse
 
-# To be continued...
-
+# Mutating joins
 
 ---
 
+# Mutating joins
 
+* Sirve para combinar variables de dos tablas.
+
+* Primero, empareja observaciones usando las llaves correspondientes, y después copia
+variables de una tabla a otra.
+
+* Añade nuevas variables a la derecha!! Trabajamos con versión reducida
+
+
+```r
+flights2 &lt;- flights %&gt;% 
+  select(year:day, hour, origin, dest, tailnum, carrier) 
+flights2 %&gt;% slice(1:3)
+```
+
+```
+## # A tibble: 3 × 8
+##    year month   day  hour origin dest  tailnum carrier
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  
+## 1  2013     1     1     5 EWR    IAH   N14228  UA     
+## 2  2013     1     1     5 LGA    IAH   N24211  UA     
+## 3  2013     1     1     5 JFK    MIA   N619AA  AA
+```
+
+---
+# Mutating joins
+
+Para entender su funcionamiento, trabajamos con datos artificiales
+
+
+```r
+x &lt;- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     3, "x3"
+)
+y &lt;- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     4, "y3"
+)
+```
+
+---
+# Mutating joins
+
+
+&lt;img src="img/join-setup1.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+---
+# Inner join
+
+Empareja observaciones únicamente cuando las llaves son iguales.
+
+&lt;img src="img/join-inner.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+---
+# Inner join
+
+La salida es un nuevo data frame con llave, variable x y variable y. 
+Las filas no emparejadas no aparecen!!
+
+
+```r
+x %&gt;% 
+  inner_join(y, by = "key")
+```
+
+```
+## # A tibble: 2 × 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2
+```
+
+---
+# Outer join
+
+Mantiene observaciones que aparecen **al menos** en uno de los dataset!!
+Tres tipos:
+
+* **Left join**: mantiene todas las observaciones de `x`
+
+* **Right join**: mantiene todas las observaciones de `y`
+
+* **Full join**: mantiene todas las observaciones de `x` e `y` 
+
+---
+# Outer join
+
+&lt;img src="img/join-outer.png" width="45%" style="display: block; margin: auto;" /&gt;
+
+---
+# Outer join
+
+Predice la respuesta de los siguientes códigos
+
+
+```r
+x %&gt;% 
+  left_join(y, by = "key")
+
+x %&gt;% 
+  right_join(y, by = "key")
+
+x %&gt;% 
+  full_join(y, by = "key")
+```
+
+---
+# Outer join
+
+Predice la respuesta de los siguientes códigos
+
+
+```r
+x %&gt;% 
+  left_join(y, by = "key")
+```
+
+```
+## # A tibble: 3 × 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     3 x3    &lt;NA&gt;
+```
+
+```r
+x %&gt;% 
+  right_join(y, by = "key")
+```
+
+```
+## # A tibble: 3 × 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     4 &lt;NA&gt;  y3
+```
+
+---
+# Outer join
+
+Predice la respuesta de los siguientes códigos
+
+
+```r
+x %&gt;% 
+  full_join(y, by = "key")
+```
+
+```
+## # A tibble: 4 × 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     3 x3    &lt;NA&gt; 
+## 4     4 &lt;NA&gt;  y3
+```
+
+
+---
+# ¿Llaves duplicadas?
+
+&lt;img src="img/join-one-to-many.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+* Caso 1: Una sola tablas tiene llaves duplicadas
+
+* Caso 2: Ambas tablas tiene llaves duplicadas
+
+---
+# Llaves duplicadas - Caso 1
+
+Caso típico!
+
+
+```r
+x &lt;- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     2, "x3",
+     1, "x4"
+)
+y &lt;- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2"
+)
+left_join(x, y, by = "key")
+```
+
+```
+## # A tibble: 4 × 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     2 x3    y2   
+## 4     1 x4    y1
+```
+
+---
+# Llaves duplicadas - Caso 1
+
+
+
+```r
+left_join(x, y, by = "key")
+```
+
+```
+## # A tibble: 4 × 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     2 x3    y2   
+## 4     1 x4    y1
+```
+
+---
+# Llaves duplicadas - Caso 2
+
+Error, llave no identifica unívocamente las observaciones
+
+
+```r
+x &lt;- tribble(
+  ~key, ~val_x,
+     1, "x1",
+     2, "x2",
+     2, "x3",
+     3, "x4"
+)
+y &lt;- tribble(
+  ~key, ~val_y,
+     1, "y1",
+     2, "y2",
+     2, "y3",
+     3, "y4"
+)
+```
+
+
+---
+# Llaves duplicadas - Caso 2
+
+Todas las combinaciones!
+
+
+```r
+left_join(x, y, by = "key")
+```
+
+```
+## # A tibble: 6 × 3
+##     key val_x val_y
+##   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+## 1     1 x1    y1   
+## 2     2 x2    y2   
+## 3     2 x2    y3   
+## 4     2 x3    y2   
+## 5     2 x3    y3   
+## 6     3 x4    y4
+```
+
+---
+# Ejercicio
+
+Utilizando los datos `flights` y `airlines`, crea una base de datos donde 
+aparezcan año, mes, día y hora de vuelo, así como la variable `carrier`
+que contiene las siglas de la aerolínea correspondiente y la
+variable `name` que tiene el nombre completo de la aerolínea.
+
+
+
+---
+# Definiendo las llaves
+
+* Hasta ahora, la llave era una única variable, con el mismo nombre en ambas
+tablas.
+
+* Indicado en `by = "key"`
+
+* ¿Otros usos de `by`?
+
+---
+# Usos de `by`
+
+* `by = NULL` es el valor por defecto. Usa todas las variables que aparecen en 
+ambas tablas
+
+* ¿Qué variables se utilizarán en el siguiente código?
+
+
+```r
+flights2 %&gt;% 
+  left_join(weather)
+```
+
+---
+# Usos de `by`
+
+* `by = "x"` une según variable/s indicad/sa, con **mismo nombre** en ambas tablas.
+
+* ¿Qué pasa?
+
+
+```r
+flights2 %&gt;% 
+  left_join(weather, by = c("year", "month"))
+```
+
+---
+# Usos de `by`
+
+* `by = c("a" = "b")` empareja la variable `a` de la primera tabla con la
+variable `b` de la segunda.
+
+* ¿Qué pasa?
+
+
+```r
+flights2 %&gt;% 
+  left_join(airports, c("dest" = "faa"))
+```
+
+--- 
+
+# Ejercicio
+
+¿Cuáles son los nombres completos de los aeropuertos de destino con el retraso medio
+más alto? Presenta una tabla con dos columnas, una con nombre completo y 
+la otra con el retraso medio.
+
+
+---
+# Ejercicio
+
+¿Qué variables usarías como llave para juntar los datos `planes` y 
+`flights`?
+
+Pista: usa las ayudas para entender cada uno de los datos
+
+---
+# Mutating joins
+
+**Consejo**: utiliza siempre que puedas el `left_join`. Es la función más
+importante
+
+
+---
+class: center, middle, inverse
+
+# Filtering joins
+
+---
+class: center, middle, inverse
+
+# Set operations
+
+---
 ## Bibliografía
 
 Este tema está fundamentalmente basado en  [R for Data Science](https://r4ds.had.co.nz/), Wickham and Grolemund (2016)

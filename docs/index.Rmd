@@ -49,7 +49,7 @@ Esta es la página del curso de Análisis de Datos creado por
   - 3.1: Importación de datos
     - [Diapositivas](./tema3/tema3-1.html)
     
-  - 3.1: Organización de datos
+  - 3.2: Organización de datos
     - [Diapositivas](./tema3/tema3-2.html)
     
 ## **Laboratorios**
