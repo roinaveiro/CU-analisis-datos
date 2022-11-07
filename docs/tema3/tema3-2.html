@@ -969,7 +969,7 @@ flights2 %&gt;%
 
 Pista: usa las ayudas para entender cada uno de los datos
 
---- 
+---
 # Ejercicio
 
 ¿Cuáles son los nombres completos de los aeropuertos de destino con el retraso medio
@@ -990,9 +990,143 @@ class: center, middle, inverse
 # Filtering joins
 
 ---
-class: center, middle, inverse
+# Filtering joins
 
+Similar a los mutating joins, pero afectan a observaciones, no a variables!
+Dos tipos
+
+* `semi_join(x,y)`: mantienen todas las observaciones de `x` que tienen pareja en
+`y`
+* `anti_join(x,y)`: elimina todas las observaciones de `x` que tienen pareja en
+`y`
+
+---
+# `semi_join(x,y)`
+
+&lt;img src="img/join-semi.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+---
+# `semi_join(x,y)`
+
+Útil para recuperar variables tras resumen.
+
+**Ejercicio**: extrae toda la información de los vuelos de `flights` cuyo destino 
+esté entre los 10 destinos con más observaciones.
+
+
+```r
+top_dest &lt;- flights %&gt;% count(dest) %&gt;% arrange(desc(n)) %&gt;% 
+  slice(1:10)
+```
+
+
+---
+# `anti_join(x,y)`
+
+&lt;img src="img/join-anti.png" width="65%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# `anti_join(x,y)`
+Útil para diagnosticar discordancias.
+
+```r
+flights %&gt;%
+  anti_join(planes, by = "tailnum") %&gt;%
+  count(tailnum) %&gt;% arrange(desc(n))
+```
+
+```
+## # A tibble: 722 × 2
+##    tailnum     n
+##    &lt;chr&gt;   &lt;int&gt;
+##  1 &lt;NA&gt;     2512
+##  2 N725MQ    575
+##  3 N722MQ    513
+##  4 N723MQ    507
+##  5 N713MQ    483
+##  6 N735MQ    396
+##  7 N0EGMQ    371
+##  8 N534MQ    364
+##  9 N542MQ    363
+## 10 N531MQ    349
+## # … with 712 more rows
+```
+
+---
+class: center, middle, inverse
 # Set operations
+
+
+---
+# Set operations
+
+Esperan `x` e `y` con las **mismas** variables.
+Tratan observaciones como conjuntos:
+
+* `intersect(x,y)`: Devuelve observaciones presentes en ambos `x` e `y`.
+
+* `union(x,y)`: Devuelve observaciones únicas presentes en `x` o `y`.
+
+* `intersect(x,y)`: Devuelve observaciones presentes en `x` pero no en `y`.
+
+---
+# Set operations
+
+
+```r
+df1 &lt;- tribble(
+  ~x, ~y,
+   1,  1,
+   2,  1
+)
+df2 &lt;- tribble(
+  ~x, ~y,
+   1,  1,
+   1,  2
+)
+```
+
+
+---
+# Set operations
+
+
+```r
+intersect(df1, df2)
+```
+
+```
+## # A tibble: 1 × 2
+##       x     y
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     1
+```
+
+```r
+union(df1, df2)
+```
+
+```
+## # A tibble: 3 × 2
+##       x     y
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     1
+## 2     2     1
+## 3     1     2
+```
+
+```r
+setdiff(df1, df2)
+```
+
+```
+## # A tibble: 1 × 2
+##       x     y
+##   &lt;dbl&gt; &lt;dbl&gt;
+## 1     2     1
+```
+
 
 ---
 ## Bibliografía

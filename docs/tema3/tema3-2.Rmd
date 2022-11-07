@@ -677,7 +677,7 @@ flights2 %>%
 
 Pista: usa las ayudas para entender cada uno de los datos
 
---- 
+---
 # Ejercicio
 
 ¿Cuáles son los nombres completos de los aeropuertos de destino con el retraso medio
@@ -698,9 +698,99 @@ class: center, middle, inverse
 # Filtering joins
 
 ---
-class: center, middle, inverse
+# Filtering joins
 
+Similar a los mutating joins, pero afectan a observaciones, no a variables!
+Dos tipos
+
+* `semi_join(x,y)`: mantienen todas las observaciones de `x` que tienen pareja en
+`y`
+* `anti_join(x,y)`: elimina todas las observaciones de `x` que tienen pareja en
+`y`
+
+---
+# `semi_join(x,y)`
+
+```{r, echo=FALSE, out.width = '65%',  fig.align='center'}
+knitr::include_graphics("img/join-semi.png")
+```
+
+---
+# `semi_join(x,y)`
+
+Útil para recuperar variables tras resumen.
+
+**Ejercicio**: extrae toda la información de los vuelos de `flights` cuyo destino 
+esté entre los 10 destinos con más observaciones.
+
+```{r}
+top_dest <- flights %>% count(dest) %>% arrange(desc(n)) %>% 
+  slice(1:10)
+```
+
+
+---
+# `anti_join(x,y)`
+
+```{r, echo=FALSE, out.width = '65%',  fig.align='center'}
+knitr::include_graphics("img/join-anti.png")
+```
+
+
+---
+# `anti_join(x,y)`
+Útil para diagnosticar discordancias.
+```{r}
+flights %>%
+  anti_join(planes, by = "tailnum") %>%
+  count(tailnum) %>% arrange(desc(n))
+```
+
+---
+class: center, middle, inverse
 # Set operations
+
+
+---
+# Set operations
+
+Esperan `x` e `y` con las **mismas** variables.
+Tratan observaciones como conjuntos:
+
+* `intersect(x,y)`: Devuelve observaciones presentes en ambos `x` e `y`.
+
+* `union(x,y)`: Devuelve observaciones únicas presentes en `x` o `y`.
+
+* `intersect(x,y)`: Devuelve observaciones presentes en `x` pero no en `y`.
+
+---
+# Set operations
+
+```{r}
+df1 <- tribble(
+  ~x, ~y,
+   1,  1,
+   2,  1
+)
+df2 <- tribble(
+  ~x, ~y,
+   1,  1,
+   1,  2
+)
+```
+
+
+---
+# Set operations
+
+```{r}
+intersect(df1, df2)
+
+union(df1, df2)
+
+setdiff(df1, df2)
+```
+
 
 ---
 ## Bibliografía
