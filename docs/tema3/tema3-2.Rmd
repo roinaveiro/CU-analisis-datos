@@ -648,11 +648,11 @@ flights2 %>%
 
 * `by = "x"` une según variable/s indicad/sa, con **mismo nombre** en ambas tablas.
 
-* ¿Qué pasa?
+
 
 ```{r, eval=FALSE}
 flights2 %>% 
-  left_join(weather, by = c("year", "month"))
+  left_join(planes, by = "tailnum")
 ```
 
 ---
