@@ -66,6 +66,9 @@ Esta es la página del curso de Análisis de Datos creado por
 ### Lab 04 - Importación
   - [Ejercicios](./labs/lab4.html)
   
+### Lab 04 - Data Wrangling
+  - [Ejercicios](./labs/lab5.html)
+  
 ## **Exámenes**
 
 ### Primer Parcial
