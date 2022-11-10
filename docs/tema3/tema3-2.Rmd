@@ -761,7 +761,7 @@ Tratan observaciones como conjuntos:
 
 * `union(x,y)`: Devuelve observaciones únicas presentes en `x` o `y`.
 
-* `intersect(x,y)`: Devuelve observaciones presentes en `x` pero no en `y`.
+* `setdiff(x,y)`: Devuelve observaciones presentes en `x` pero no en `y`.
 
 ---
 # Set operations
