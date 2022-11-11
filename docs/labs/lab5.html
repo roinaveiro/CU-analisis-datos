@@ -1846,6 +1846,29 @@ la base de datos <code>flights</code>.</p>
 <div id="solución-6" class="section level3">
 <h3>Solución</h3>
 </div>
+<div id="ejercicio-8" class="section level3">
+<h3>Ejercicio 8</h3>
+<p>(Difícil) Representa un mapa de los Estados Unidos donde cada
+aeropuerto de destino aparezca como un punto. El tamaño del punto ha de
+ser proporcional al valor medio del tiempo de vuelo
+(<code>air_time</code>) a ese aeropuerto (desde cualquier aeropuerto de
+NYC). Repite el ejercicio excluyendo el aeropuerto de Alaska y el de
+Hawaii.</p>
+<p>¿Qué observas?</p>
+<p><strong>Pista:</strong> Para representar el mapa de EEUU puedes usar
+la siguiente función, donde <code>data</code> contiene al menos dos
+columnas llamadas lat (la latitud del aeropuerto) y lon (su
+longitud).</p>
+<pre class="r"><code>ggplot(data, aes(lon, lat)) +
+    borders(&quot;state&quot;) +
+    geom_point() + theme_classic() +
+    coord_quickmap()</code></pre>
+<p><strong>Pista:</strong> Las coordenadas de cada aeropuerto de destino
+están en la base de datos <code>airports</code>.</p>
+</div>
+<div id="solución-7" class="section level3">
+<h3>Solución</h3>
+</div>
 </div>
 
 
