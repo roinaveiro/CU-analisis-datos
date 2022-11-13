@@ -282,8 +282,8 @@ x &lt;- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, "Le")
 ```
 
-<div id="htmlwidget-099186ccfc042eb7f51b" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-099186ccfc042eb7f51b">{"x":{"html":"<ul>\n  <li>Cats<\/li>\n  <li>Uñas Chung <span class='match'>Le<\/span>e<\/li>\n  <li>Capital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c5547fb427865d0c20a5" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c5547fb427865d0c20a5">{"x":{"html":"<ul>\n  <li>Cats<\/li>\n  <li>Uñas Chung <span class='match'>Le<\/span>e<\/li>\n  <li>Capital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 **Pregunta**: diferencia entre `str_view` y `str_view_all`
 
@@ -298,8 +298,8 @@ x &lt;- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, ".a.")
 ```
 
-<div id="htmlwidget-35d9de362e30babff215" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-35d9de362e30babff215">{"x":{"html":"<ul>\n  <li><span class='match'>Cat<\/span>s<\/li>\n  <li>U<span class='match'>ñas<\/span> Chung Lee<\/li>\n  <li><span class='match'>Cap<\/span>ital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0c00ccd4bf26131bd48f" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0c00ccd4bf26131bd48f">{"x":{"html":"<ul>\n  <li><span class='match'>Cat<\/span>s<\/li>\n  <li>U<span class='match'>ñas<\/span> Chung Lee<\/li>\n  <li><span class='match'>Cap<\/span>ital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 ---
 ## Strings: expresiones regulares
 
@@ -311,16 +311,15 @@ x &lt;- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, "^C")
 ```
 
-<div id="htmlwidget-f09752cb88b3a0c3f989" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f09752cb88b3a0c3f989">{"x":{"html":"<ul>\n  <li><span class='match'>C<\/span>ats<\/li>\n  <li>Uñas Chung Lee<\/li>\n  <li><span class='match'>C<\/span>apital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7d3fff868802c2129c9c" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7d3fff868802c2129c9c">{"x":{"html":"<ul>\n  <li><span class='match'>C<\/span>ats<\/li>\n  <li>Uñas Chung Lee<\/li>\n  <li><span class='match'>C<\/span>apital<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 ```r
-x &lt;- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, "l$")
 ```
 
-<div id="htmlwidget-0cfdef55041a16e46d0a" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0cfdef55041a16e46d0a">{"x":{"html":"<ul>\n  <li>Cats<\/li>\n  <li>Uñas Chung Lee<\/li>\n  <li>Capita<span class='match'>l<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-dd00b53e74deef89d573" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dd00b53e74deef89d573">{"x":{"html":"<ul>\n  <li>Cats<\/li>\n  <li>Uñas Chung Lee<\/li>\n  <li>Capita<span class='match'>l<\/span><\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 ---
 ## Strings: expresiones regulares
@@ -335,8 +334,8 @@ x = c("B12", "Eslava", "Ocho y Medio")
 str_view_all(x, "\\d")
 ```
 
-<div id="htmlwidget-3ef5a89eb8a23ef69bee" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3ef5a89eb8a23ef69bee">{"x":{"html":"<ul>\n  <li>B<span class='match'>1<\/span><span class='match'>2<\/span><\/li>\n  <li>Eslava<\/li>\n  <li>Ocho y Medio<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-938b553121deb10980b8" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-938b553121deb10980b8">{"x":{"html":"<ul>\n  <li>B<span class='match'>1<\/span><span class='match'>2<\/span><\/li>\n  <li>Eslava<\/li>\n  <li>Ocho y Medio<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 OJO
 
 
@@ -354,16 +353,16 @@ writeLines("\\d")
 
 ```r
 x = c("ES12", "Mi cuenta es ES46", "Resido en España (ES)")
-str_view_all(x, "ES\\d\\d")
+str_view(x, "ES\\d\\d")
 ```
 
-<div id="htmlwidget-acc2cadba93e02644864" style="width:960px;height:100%;" class="str_view html-widget"></div>
-<script type="application/json" data-for="htmlwidget-acc2cadba93e02644864">{"x":{"html":"<ul>\n  <li><span class='match'>ES12<\/span><\/li>\n  <li>Mi cuenta es <span class='match'>ES46<\/span><\/li>\n  <li>Resido en España (ES)<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-135b08980d83af883dde" style="width:960px;height:100%;" class="str_view html-widget"></div>
+<script type="application/json" data-for="htmlwidget-135b08980d83af883dde">{"x":{"html":"<ul>\n  <li><span class='match'>ES12<\/span><\/li>\n  <li>Mi cuenta es <span class='match'>ES46<\/span><\/li>\n  <li>Resido en España (ES)<\/li>\n<\/ul>"},"evals":[],"jsHooks":[]}</script>
 
 ---
 ## Strings: expresiones regulares
 
-Detecta las autovías correctas
+**Ejercicio**: Detecta las autovías correctas
 
 
 ```r
@@ -395,6 +394,9 @@ words[str_detect(words, "x$")]
 ```
 ## [1] "box" "sex" "six" "tax"
 ```
+
+---
+## Strings: detectar patrones
 
 También con dataframes
 
@@ -606,8 +608,7 @@ Con `fct_reorder()`. Toma tres argumentos
 
 ---
 ## Factores - Reordenar niveles
-
-Dos opciones 
+Tres opciones 
 
 
 ```r
@@ -618,12 +619,11 @@ gss_cat %&gt;%
     geom_point() + theme_bw()
 ```
 
-![](tema3-3_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
+![](tema3-3_files/figure-html/unnamed-chunk-30-1.png)&lt;!-- --&gt;
 
 ---
 ## Factores - Reordenar niveles
-
-Dos opciones 
+Tres opciones 
 
 
 ```r
@@ -635,12 +635,13 @@ gss_cat %&gt;%
     geom_point() + theme_bw()
 ```
 
-![](tema3-3_files/figure-html/unnamed-chunk-32-1.png)&lt;!-- --&gt;
+![](tema3-3_files/figure-html/unnamed-chunk-31-1.png)&lt;!-- --&gt;
 
 
 
 ---
-
+## Factores - Reordenar niveles
+Tres opciones 
 
 
 ```r
@@ -651,12 +652,10 @@ relig_summary &lt;- gss_cat %&gt;%
     tvhours = mean(tvhours, na.rm = TRUE),
     n = n()
   )
-#&gt; `summarise()` ungrouping output (override with `.groups` argument)
-
-ggplot(relig_summary, aes(tvhours, relig)) + geom_point()
+ggplot(relig_summary, aes(tvhours, relig)) + geom_point() + theme_bw()
 ```
 
-![](tema3-3_files/figure-html/unnamed-chunk-33-1.png)&lt;!-- --&gt;
+![](tema3-3_files/figure-html/unnamed-chunk-32-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -799,7 +798,7 @@ now()
 ```
 
 ```
-## [1] "2022-11-13 20:31:12 CET"
+## [1] "2022-11-13 20:46:44 CET"
 ```
 
 ```r
@@ -807,7 +806,7 @@ str(now())
 ```
 
 ```
-##  POSIXct[1:1], format: "2022-11-13 20:31:12"
+##  POSIXct[1:1], format: "2022-11-13 20:46:44"
 ```
 
 ---
@@ -875,10 +874,6 @@ mdy_hm("01/31/2017 08:01")
 
 ```
 ## [1] "2017-01-31 08:01:00 UTC"
-```
-
-```r
-#&gt; 
 ```
 
 ---
@@ -1202,6 +1197,11 @@ ddays(0:5)
 ## [1] "0s"                "86400s (~1 days)"  "172800s (~2 days)"
 ## [4] "259200s (~3 days)" "345600s (~4 days)" "432000s (~5 days)"
 ```
+---
+## Fechas y horas - Operaciones con duraciones
+
+Funciones úliles. Siempre en segundos!!
+
 
 ```r
 dweeks(3)
@@ -1218,6 +1218,7 @@ dyears(1)
 ```
 ## [1] "31557600s (~1 years)"
 ```
+
 
 ---
 ## Fechas y horas - Operaciones con duraciones
@@ -1282,6 +1283,12 @@ days(7)
 ```
 ## [1] "7d 0H 0M 0S"
 ```
+
+---
+## Fechas y horas - Operaciones con períodos
+
+Más intuitivo
+
 
 ```r
 months(1:6)

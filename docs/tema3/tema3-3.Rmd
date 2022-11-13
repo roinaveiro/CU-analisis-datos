@@ -238,9 +238,6 @@ Empieza por `^` y termina por `$`
 ```{r}
 x <- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, "^C")
-```
-```{r}
-x <- c("Cats", "Uñas Chung Lee", "Capital")
 str_view(x, "l$")
 ```
 
@@ -266,13 +263,13 @@ writeLines("\\d")
 
 ```{r}
 x = c("ES12", "Mi cuenta es ES46", "Resido en España (ES)")
-str_view_all(x, "ES\\d\\d")
+str_view(x, "ES\\d\\d")
 ```
 
 ---
 ## Strings: expresiones regulares
 
-Detecta las autovías correctas
+**Ejercicio**: Detecta las autovías correctas
 
 ```{r}
 x <- c("A1", "A12", "A14", "A6", "EA5", "A3", "F2")
@@ -293,6 +290,9 @@ Uso común, seleccionar los elementos que cumplen el patrón
 ```{r}
 words[str_detect(words, "x$")]
 ```
+
+---
+## Strings: detectar patrones
 
 También con dataframes
 
@@ -426,10 +426,9 @@ Con `fct_reorder()`. Toma tres argumentos
 
 ---
 ## Factores - Reordenar niveles
+Tres opciones 
 
-Dos opciones 
-
-```{r}
+```{r, fig.width = 9, fig.height = 4}
 gss_cat %>%
   group_by(relig) %>%
   summarise(tvhours = mean(tvhours, na.rm = TRUE)) %>%  
@@ -439,10 +438,9 @@ gss_cat %>%
 
 ---
 ## Factores - Reordenar niveles
+Tres opciones 
 
-Dos opciones 
-
-```{r}
+```{r, fig.width = 9, fig.height = 4}
 gss_cat %>%
   group_by(relig) %>%
   summarise(tvhours = mean(tvhours, na.rm = TRUE)) %>%  
@@ -454,9 +452,10 @@ gss_cat %>%
 
 
 ---
+## Factores - Reordenar niveles
+Tres opciones 
 
-
-```{r}
+```{r, fig.width = 9, fig.height = 4}
 relig_summary <- gss_cat %>%
   group_by(relig) %>%
   summarise(
@@ -464,10 +463,7 @@ relig_summary <- gss_cat %>%
     tvhours = mean(tvhours, na.rm = TRUE),
     n = n()
   )
-#> `summarise()` ungrouping output (override with `.groups` argument)
-
-ggplot(relig_summary, aes(tvhours, relig)) + geom_point()
-
+ggplot(relig_summary, aes(tvhours, relig)) + geom_point() + theme_bw()
 ```
 
 
@@ -579,7 +575,6 @@ dmy("31 of January of 2017")
 
 ymd_hms("2017-01-31 20:11:59")
 mdy_hm("01/31/2017 08:01")
-#> 
 ```
 
 ---
@@ -729,9 +724,17 @@ dseconds(15)
 dminutes(10)
 dhours(c(12, 24))
 ddays(0:5)
+```
+---
+## Fechas y horas - Operaciones con duraciones
+
+Funciones úliles. Siempre en segundos!!
+
+```{r}
 dweeks(3)
 dyears(1)
 ```
+
 
 ---
 ## Fechas y horas - Operaciones con duraciones
@@ -756,6 +759,14 @@ seconds(15)
 minutes(10)
 hours(c(12, 24))
 days(7)
+```
+
+---
+## Fechas y horas - Operaciones con períodos
+
+Más intuitivo
+
+```{r}
 months(1:6)
 weeks(3)
 years(1)
