@@ -52,6 +52,9 @@ Esta es la página del curso de Análisis de Datos creado por
   - 3.2: Organización de datos
     - [Diapositivas](./tema3/tema3-2.html)
     
+  - 3.3: Transformación de datos
+    - [Diapositivas](./tema3/tema3-3.html)
+    
 ## **Laboratorios**
 
 ### Lab 01 - Programación en R 
