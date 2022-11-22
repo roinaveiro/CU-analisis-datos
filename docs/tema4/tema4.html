@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Tema 4</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Roi Naveiro" />
+    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
+    <link rel="stylesheet" href="ds_slides.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+class: center, middle, inverse, title-slide
+
+&lt;div class="title-logo"&gt;&lt;/div&gt;
+
+# Análisis de Datos
+ 
+## Tema 4 - Modelización
+
+&lt;br&gt;
+&lt;br&gt;
+.pull-left[
+### Roi Naveiro
+]
+---
+## Modelización
+
+Las herramientas de modelización tienen cuatro objetivos fundamentales:
+
+* **Explorar** los datos: los modelos a veces revelan patrones que no son evidentes en
+las visualizaciónes (&gt;3D)
+
+* **Generalizar** hallazgos de una muestra a la población (inferencia)
+
+* Determinar **relaciones causa-efecto** (inferencia causal)
+
+
+&lt;img src="img/data-science-model.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+## Modelización
+
+Los patrones descubiertos por las herramientas de modelización pueden ser:
+
+* Patrones de asociación
+* Relaciones causa-efecto
+
+Además, estos patrones pueden:
+
+* Darse únicamente en los datos observados
+* Generalizarse a la población 
+
+---
+## Modelización
+
+La forma de recolectar los datos afecta al tipo de generalización de las 
+conclusiones:
+
+* Si queremos que las conclusiones extraídas a partir de una muestra de datos
+sean generalizables a la población, debemos muestrear los sujetos **al azar**.
+
+&lt;img src="img/bdl.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+[Fuente](https://www.huffingtonpost.es/2016/03/28/troleo-en-la-red-para-bautizar-blas-de-lezo-a-un-buque-brita_n_9556114.html)
+
+---
+## Modelización
+
+¿Muestrear datos al azar nos garantiza que los patrones detectados sean relaciones 
+causa-efecto reales?
+
+---
+## Study: Cereal Keeps Girls Slim
+ 
+Se observó que las mujeres que desayunaban tenían un **índice de masa corporal promedio más bajo**, un indicador común de obesidad, que las que no desayunaban. El índice fue aún más bajo para las que **desayunaban cereales**, según los hallazgos del estudio realizado por el Instituto de Investigación Médica de Maryland con fondos de NIH y el fabricante de cereales General Mills.
+
+[...]
+
+Los resultados se obtuvieron de una encuesta de NIH de 2379 mujeres en California, Ohio y Maryland.
+
+[...]
+
+Como parte de la encuesta, se preguntaba a las niñas una vez al año qué habían comido durante los tres días anteriores...
+
+[Fuente](https://www.cbsnews.com/news/study-cereal-keeps-girls-slim/)
+
+---
+## Study: Cereal Keeps Girls Slim
+
+Existen tres posibles explicaciones de este hallazgo:
+
+* Comer cereales es la causa de que las mujeres estén delgadas
+
+* Que las mujeres estén delgadas es la causa de que coman cerales
+
+* Existe una tercera variable que es causa de estas dos, **variable de confusión**
+
+Una **variable de confusión** es una variable exógena que es causa tanto a la variable explicativa como a la de respuesta, y que hace que parezca que existe una relación entre ellas.
+
+---
+## Study: Cereal Keeps Girls Slim
+
+"Aquellos que desayunan regularmente tienen **más probabilidades de tener un plan de alimentación estructurado** a lo largo del día y, en consecuencia, es menos probable que coman entre comidas y consuman calorías vacías".
+
+---
+## Study: Cereal Keeps Girls Slim
+
+¿Por qué se publica esto?
+
+&lt;img src="img/follow-money.jpeg" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+## Estudios científicos
+
+Según el proceso de recolección de los datos, distinguimos estudios:
+
+* **Observacionales**
+
+  * Se recogen datos de forma que no se altera el proceso de generación de los mismos
+
+  * Sirven para determinar **asociación**
+
+* **Experimentales**
+
+  * Se asignan diferentes tratamientos a distintos individuos 
+
+  * Establecer relaciones **causa-efecto**
+
+---
+## Estudios científicos
+
+&lt;img src="img/studies.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+## Correlación no implica necesariamente causalidad
+
+&lt;img src="img/margarina.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+## Modelización
+
+Las herramientas de modelización tienen cuatro objetivos fundamentales:
+
+* **Explorar** los datos: los modelos a veces revelan patrones que no son evidentes en
+las visualizaciónes (&gt;3D)
+
+* **Generalizar** hallazgos de una muestra a la población (inferencia)
+
+* Determinar **relaciones causa-efecto** (inferencia causal)
+
+&lt;img src="img/data-science-model.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+## Modelización
+
+* En lo que resta de curso, introduciremos herramientas básicas de modelización, poniendo
+el foco en su uso como **técnicas de exploración** de datos.
+
+* **No** vamos a estudiar cómo usar estas herramientas para generalizar resultados a poblaciones, ni para determinar causalidad.
+
+* No hay nada malo con la exploración, pero nunca debes vender un análisis exploratorio como un análisis confirmatorio porque es **engañoso**.
+
+---
+class: center, middle, inverse
+
+# Elementos básicos de los modelos
+
+---
+## ¿Qué son los modelos?
+
+* Herramientas que nos permiten extraer patrones de los datos.
+
+* Patrones vs residuos
+
+* Estudiaremos modelos que relacionan un serie de variables (variables predictoras)
+coon una variable de interés (variable respuesta)
+
+---
+## ¿Qué son los modelos?
+
+* Representamos estas relaciones como **funciones**
+
+* Una función mapea unos inputs a un output
+
+* Esta función tiene input `\(x\)` y output `\(y\)`
+$$
+y = 3x + 7
+$$
+
+---
+## ¿Qué son los modelos?
+
+
+```r
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal() +
+  geom_smooth(method="lm", se=FALSE, color='red')
+```
+
+![](tema4_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+
+---
+## ¿Qué son los modelos?
+
+Distinguimos elementos importantes
+
+* **Familia de modelos**: definen el patrón que queremos capturar. Por ejemplo:
+la familia de modelos lineales que relacionan `\(x\)` con `\(y\)` es:
+
+$$
+y = \beta_0 + \beta_1 x
+$$
+
+* **Modelo ajustado**: aquel dentro de la familia que mejor reproduce los datos observados
+
+**OJO**: el mejor modelo de la familia no tiene por qué ser la realidad. Los modelos son
+simplificaciones de la realidad que nos sirven de algún propósito
+
+---
+## ¿Qué son los modelos?
+
+&lt;img src="img/box.jpeg" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+## Vocabulario
+
+* **Variable respuesta**: Variable cuyo comportamiento o variación se está tratando de entender. También llamada variable dependiente. Eje y.
+
+* **Variables explicativas**: otras variables que desea utilizar para explicar la variación en la respuesta. También llamadas variables independientes, covariables, predictores o *features*. Eje x.
+
+* **Valor predicho**: output del modelo para cierto valor de las covariables.
+
+---
+## Vocabulario
+
+Discute los elementos anteriores en este ejemplo.
+
+
+```r
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal() +
+  geom_smooth(method="lm", se=FALSE, color='red')
+```
+
+![](tema4_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+
+---
+## Ajustando modelos
+
+
+```r
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() + theme_minimal()
+```
+
+![](tema4_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+
+---
+## Ajustando modelos
+
+* Los datos anteriores presentan un patrón claro
+
+* Usaremos un modelo para capturar ese patrón y hacerlo explícito
+
+* Un modelo lineal parece razonable `\(y = \beta_0 + \beta_1 x\)`
+
+* Existen infinitos modelos en esta familia
+
+---
+## Ajustando modelos
+
+
+```r
+models &lt;- tibble(
+  a1 = runif(250, -20, 40),
+  a2 = runif(250, -5, 5)
+)
+
+ggplot(mtcars, aes(wt, mpg)) + 
+  geom_abline(aes(intercept = a1, slope = a2), data = models, alpha = 1/4) +
+  geom_point() + theme_minimal()
+```
+
+![](tema4_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
+
+---
+## Ajustando modelos
+
+* La mayoría de estos modelos son **malos**, no capturan el patrón
+
+* Necesitamos determinar qué modelos son **más cercanos** a los datos
+
+* Una opción, usar el modelo que minimice suma de las distancias verticales de cada
+punto a la recta del modelo
+
+---
+## Ajustando modelos
+
+![](tema4_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+
+---
+## Regresión lineal
+
+Este modelo se conoce como regresión lineal. Para obtener el valor de los coeficientes 
+usando R, hacemos
+
+
+```r
+reg_mod &lt;- lm(mpg ~ wt, data = mtcars)
+coef(reg_mod)
+```
+
+```
+## (Intercept)          wt 
+##   37.285126   -5.344472
+```
+
+* Intercept es la estimación del coeficiente `\(\beta_0\)` y wt la de `\(\beta_1\)`
+
+---
+## Regresión lineal
+
+La regresión lineal es un modelo estadístico de la relación entre un predictor `\(x\)`
+y una variable respuesta cuantitativa `\(y\)` cuando esta relación es lineal con cierto
+error `\(\epsilon\)`
+
+$$
+y = \beta_0 + \beta_1 x + \epsilon
+$$
+
+En este curso no hablaremos mucho del error `\(\epsilon\)` pero recuerda que siempre existe.
+
+---
+## Regresión lineal
+
+* Para estimar los valores de `\(\beta_0\)` y `\(\beta_1\)`, usamos los datos.
+
+* Llamamos a las estimaciones `\(b_0\)` y `\(b_1\)` y `\(\hat{y} = b_0 + b_1 x\)`.
+
+* `\(b_0\)` y `\(b_1\)` son aquellos valores que hacen que las distancias verticales vistas anteriormente sean mínimas.
+
+---
+## Regresión lineal - Residuos
+
+Los residuos nos dicen cómo de lejos está cada valor predicho de su valore observado
+
+Residuo = Valor observado - valor predicho: `\(y - \hat{y}\)`
+
+---
+## Visualización de modelos
+
+Podemos visualizar:
+
+* Las predicciones de los modelos
+
+* Los residuos de los modelos
+
+Para esto, utilizamos `modelr` de `tidyverse`
+
+---
+## Visualización de modelos
+
+* Primero creamos una red de puntos de la variable predictora
+
+
+```r
+library(modelr)
+grid &lt;- mtcars %&gt;% 
+  data_grid(wt) 
+
+grid
+```
+
+```
+## # A tibble: 29 × 1
+##       wt
+##    &lt;dbl&gt;
+##  1  1.51
+##  2  1.62
+##  3  1.84
+##  4  1.94
+##  5  2.14
+##  6  2.2 
+##  7  2.32
+##  8  2.46
+##  9  2.62
+## 10  2.77
+## # … with 19 more rows
+```
+
+---
+## Visualización de modelos
+
+* Con el modelo, podemos añadir predicciones
+
+
+```r
+reg_mod &lt;- lm(mpg ~ wt, data = mtcars)
+
+grid &lt;- grid %&gt;% 
+  add_predictions(reg_mod)
+
+grid
+```
+
+```
+## # A tibble: 29 × 2
+##       wt  pred
+##    &lt;dbl&gt; &lt;dbl&gt;
+##  1  1.51  29.2
+##  2  1.62  28.7
+##  3  1.84  27.5
+##  4  1.94  26.9
+##  5  2.14  25.8
+##  6  2.2   25.5
+##  7  2.32  24.9
+##  8  2.46  24.1
+##  9  2.62  23.3
+## 10  2.77  22.5
+## # … with 19 more rows
+```
+
+---
+## Visualización de modelos
+
+
+```r
+ggplot(mtcars, aes(wt)) +
+  geom_point(aes(y = mpg)) + theme_minimal() +
+  geom_line(aes(y = pred), data = grid, colour = "red", size = 1)
+```
+
+![](tema4_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
+
+
+---
+## Visualización de modelos
+
+Añadimos residuos usando
+
+
+```r
+reg_mod &lt;- lm(mpg ~ wt, data = mtcars)
+
+mtcars &lt;- mtcars %&gt;% add_residuals(reg_mod)
+```
+
+---
+## Visualización de modelos
+
+
+```r
+ggplot(mtcars, aes(wt, resid)) + 
+  geom_ref_line(h = 0) +
+  geom_point() 
+```
+
+![](tema4_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
+
+---
+## Visualización de modelos
+
+* Las predicciones nos dicen qué patrón hemos capturado
+
+* Los residuos indican qué patrón queda sin capturar
+
+
+---
+## Bibliografía
+
+Este tema está fundamentalmente basado en  [R for Data Science](https://r4ds.had.co.nz/), Wickham and Grolemund (2016)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightLines": true,
+"highlightStyle": "github",
+"countIncrementalSlides": false,
+"slideNumberFormat": "%current%"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+<style>
+.logo {
+  background-image: url(img/logo2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 110px;
+  height: 128px;
+  z-index: 0;
+}
+</style>
+
+<style>
+  .title-logo {
+    background-image: url(img/logo2.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 1em;
+    left: 20em;
+    width: 110px;
+    height: 128px;
+    z-index: 0;
+  }
+  </style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)' 
+
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
