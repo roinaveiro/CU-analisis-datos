@@ -318,7 +318,9 @@ coef(reg_mod)
 ##   37.285126   -5.344472
 ```
 
-* Intercept es la estimación del coeficiente `\(\beta_0\)` y wt la de `\(\beta_1\)`
+* El objeto `mpg ~ wt` es una fórmula. Equivale a $\text{mpg} = \beta_0 + \beta_1 \cdot \text{wt} $
+
+* Intercept es la estimación del coeficiente `\(\beta_0\)` y el otro número es la estimación de `\(\beta_1\)`
 
 ---
 ## Regresión lineal
@@ -348,6 +350,20 @@ En este curso no hablaremos mucho del error `\(\epsilon\)` pero recuerda que sie
 Los residuos nos dicen cómo de lejos está cada valor predicho de su valore observado
 
 Residuo = Valor observado - valor predicho: `\(y - \hat{y}\)`
+
+
+---
+## Regresión lineal
+
+* La recta de regresión es aquella que minimiza la suma de distancias verticales.
+
+* Esto es equivalente a minimizar la suma de los residuos al cuadrado
+
+`\begin{eqnarray}
+&amp;&amp;\sum_{i=1}^n [y_i-\hat{y}_i]^2 = \\
+&amp;&amp;\sum_{i=1}^n [y_i-(\beta_0 + \beta_1 x)]^2
+\end{eqnarray}`
+
 
 ---
 ## Visualización de modelos
@@ -466,6 +482,303 @@ ggplot(mtcars, aes(wt, resid)) +
 * Las predicciones nos dicen qué patrón hemos capturado
 
 * Los residuos indican qué patrón queda sin capturar
+
+
+---
+## ¿Qué hacer con los modelos?
+
+* **Explicación**: caracterizar la relación entre `\(y\)` y `\(x\)` a través de los parámetros
+`\(\beta_0\)` y `\(\beta_1\)`
+
+* **Predicción**: para un nuevo valor de `\(x\)`, obtener su valor `\(y\)`
+
+---
+## Interpretación de la regresión lineal
+
+Volvamos a la regresión anterior. La librería `broom` de tidyverse, sirve para 
+ordenar los resultados de `lm`. **OJO**: no se carga automáticamente al cargar `tidyverse`.
+
+
+```r
+library(broom)
+mod_reg &lt;- lm(mpg ~ wt, data=mtcars)
+tidy(mod_reg)
+```
+
+```
+## # A tibble: 2 × 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)    37.3      1.88      19.9  8.24e-19
+## 2 wt             -5.34     0.559     -9.56 1.29e-10
+```
+
+---
+## Interpretación de la regresión lineal - Pendiente
+
+El modelo de regresión lineal es
+
+$$
+\widehat{ \text{mpg} } = \beta_0 + \beta_1 \text{wt}
+$$
+
+Aumentemos wt en una unidad
+
+`\begin{eqnarray}
+&amp;&amp; \beta_0 + \beta_1 ( \text{wt} + 1) = \\
+&amp;&amp; \beta_0 + \beta_1 \text{wt} + \beta_1 = \\
+&amp;&amp; \widehat{ \text{mpg} } + \beta_1
+\end{eqnarray}`
+
+¿Cómo se interpreta `\(\beta_1\)`?
+
+---
+## Interpretación de la regresión lineal - Ordenada en el orign
+
+El modelo de regresión lineal es
+
+$$
+\widehat{ \text{mpg} } = \beta_0 + \beta_1 \text{wt}
+$$
+
+Sustituímos wt por cero
+
+`\begin{eqnarray}
+\widehat{ \text{mpg} } = \beta_0 + \beta_1 \times 0 = \beta_0
+\end{eqnarray}`
+
+¿Cómo se interpreta `\(\beta_0\)`?
+
+---
+## Interpretación de la Regresión Lineal
+
+Vamos a modelizar cómo afectan los años de experiencia en el salario de un profesor
+
+
+```r
+library(openintro)
+data("teacher")
+set.seed(1)
+grade &lt;- sample(c(rep("elementary", 20), rep("middle", 25), rep("high", 26)))
+teacher &lt;- teacher %&gt;%
+  mutate(degree = factor(degree, c("MA","BA")),
+         grade = grade)
+```
+
+---
+## Interpretación de la Regresión Lineal
+
+Vamos a modelizar cómo afectan los años de experiencia en el salario de un profesor
+
+
+```r
+ggplot(teacher, aes(x=years, y=base)) + geom_point() + theme_minimal()
+```
+
+![](tema4_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
+
+---
+## Interpretación de la Regresión Lineal
+
+Ajusta un modelo lineal, obtén los coeficientes e interprétalos.
+
+Determina la predicción del salario de un profesor con 15 años de experiencia.
+
+---
+## Interpretación de la Regresión Lineal
+
+
+```r
+ggplot(teacher, aes(x=years, y=base)) + geom_point() +
+  geom_smooth(method="lm", color='red', se=FALSE) + theme_minimal()
+```
+
+![](tema4_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+
+
+---
+## Regresión Lineal: Predictores Categóricos
+
+* Hasta ahora hemos considerado la `\(x\)` contínua. ¿Qué sucede si es categórica?
+
+* Imaginemos que la `\(x\)` se refiere a género y toma dos valores: masculino y femenino.
+
+* `\(y = \beta_0 + \beta_1 x\)` no tendría sentido, `\(x\)` no es un número!
+
+* Podemos hacer `\(y = \beta_0 +\beta_1 \text{gen}\_\text{masc}\)`, donde `\(\text{gen}\_\text{masc}\)` toma valor 1 para hombres y cero para mujeres
+
+---
+## Regresión Lineal: Predictores Categóricos
+
+* Salario frente a grado. ¿Qué niveles tiene la variable degree?
+
+* Ajustamos un modelo
+
+
+```r
+mod_base_degree &lt;- lm(base ~ degree, data=teacher)
+tidy(mod_base_degree)
+```
+
+```
+## # A tibble: 2 × 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)   56610.     1777.    31.8   5.44e-43
+## 2 degreeBA       -352.     2398.    -0.147 8.84e- 1
+```
+
+---
+## Regresión Lineal: Predictores Categóricos
+
+* R ha creado una **variable indicatriz**  degreeBA: si el grado es BA toma valor 1,
+sino 0.
+
+* Si la variable tuviese tres niveles A, B y C, R crearía dos variables indicatrices, e.g. para A y B.
+
+* El nivel base es el nivel que toma la variable cuando todas las indicatrices son 0.
+
+* Los coeficientes se interpretan respecto al nivel base.
+
+
+---
+## Regresión Lineal: Predictores Categóricos
+
+
+```r
+mod_base_degree &lt;- lm(base ~ degree, data=teacher)
+tidy(mod_base_degree)
+```
+
+```
+## # A tibble: 2 × 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)   56610.     1777.    31.8   5.44e-43
+## 2 degreeBA       -352.     2398.    -0.147 8.84e- 1
+```
+Interpreta cada coeficiente
+
+---
+## Regresión Lineal: Visualizamos las predicciones
+
+
+```r
+mod_base_degree &lt;- lm(base ~ degree, data=teacher)
+
+grid &lt;- teacher %&gt;% 
+  data_grid(degree) %&gt;% 
+  add_predictions(mod_base_degree)
+grid
+```
+
+```
+## # A tibble: 2 × 2
+##   degree   pred
+##   &lt;fct&gt;   &lt;dbl&gt;
+## 1 MA     56610.
+## 2 BA     56257.
+```
+
+---
+## Regresión Lineal: Visualizamos las predicciones
+
+
+```r
+ggplot(teacher, aes(x=degree)) + geom_point(aes(y=base)) + theme_minimal() +
+  geom_point(data = grid, aes(y = pred), colour = "red", size = 4)
+```
+
+![](tema4_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
+
+---
+## Regresión Lineal: Visualizamos las predicciones
+
+Predecimos la media para cada grupo!
+
+---
+## Regresión Lineal Múltiple
+
+* En múltiples ocasiones, tenemos más de una variable predictora.
+
+* El modelo lineal más sencillo para este caso, es la **regresión lineal múltiple**
+
+$$
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_p x_p
+$$
+
+* El efecto de cada variable se estima independientemente del resto de variables.
+
+---
+## Regresión Lineal Múltiple - Interpretación
+
+* ¿Cómo se interpreta `\(\beta_0\)`? 
+
+* ¿Cómo se interpreta `\(\beta_1\)`? 
+
+---
+## Regresión Lineal Múltiple 
+
+En R
+
+
+```r
+mod_reg &lt;- lm(base ~ years + degree, data = teacher)
+tidy(mod_reg)
+```
+
+```
+## # A tibble: 3 × 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)   44838.    1156.      38.8  4.11e-48
+## 2 years           818.      54.0     15.2  1.75e-23
+## 3 degreeBA      -2560.    1164.      -2.20 3.12e- 2
+```
+
+---
+## Regresión Lineal Múltiple 
+
+Visualizamos las predicciones
+
+
+```r
+grid &lt;- teacher %&gt;% 
+  data_grid(years, degree) %&gt;% 
+  add_predictions(mod_reg)
+grid
+```
+
+```
+## # A tibble: 76 × 3
+##    years degree   pred
+##    &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;
+##  1     0 MA     44838.
+##  2     0 BA     42278.
+##  3     1 MA     45656.
+##  4     1 BA     43096.
+##  5     2 MA     46474.
+##  6     2 BA     43914.
+##  7     3 MA     47292.
+##  8     3 BA     44732.
+##  9     4 MA     48110.
+## 10     4 BA     45550.
+## # … with 66 more rows
+```
+
+---
+## Regresión Lineal Múltiple 
+
+Visualizamos las predicciones
+
+
+```r
+ggplot(teacher, aes(years, base, colour = degree)) + 
+  geom_point() + 
+  geom_line(data = grid, aes(y = pred)) + theme_minimal()
+```
+
+![](tema4_files/figure-html/unnamed-chunk-29-1.png)&lt;!-- --&gt;
 
 
 ---
