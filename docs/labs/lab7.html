@@ -11,7 +11,7 @@
 
 
 
-<title>Análisis de Datos</title>
+<title>Lab 07 - Modelos</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1465,6 +1465,26 @@ padding-right: 0;
 padding-left: 90px;
 font-size: 13pt;
 }
+ol>li:before {
+
+content: "Question " counter(li)".";
+
+counter-increment: li;
+position: absolute;
+color: #222222;
+left: -0.5px;
+font-weight: bold;
+}
+ol ol>li:before {
+counter-reset: sub-item;
+
+
+position: absolute;
+color: #222222;
+left: -0.5px;
+font-weight: bold;
+padding-left: 90px;
+}
 .td {
 font-size: 10pt;
 }
@@ -1626,9 +1646,7 @@ border-radius: 0px;
 
 
 
-<h1 class="title toc-ignore"><strong>Análisis de Datos</strong></h1>
-<h3 class="subtitle">CUNEF Universidad</h3>
-<h4 class="date">Página actualizada: 2022-11-29</h4>
+<h1 class="title toc-ignore">Lab 07 - Modelos</h1>
 
 </div>
 
@@ -1636,114 +1654,186 @@ border-radius: 0px;
 <div class="title-logo">
 
 </div>
-<p>Esta es la página del curso de Análisis de Datos creado por <a href="http://roinaveiro.github.io">Roi Naveiro</a></p>
-<div id="contenido" class="section level2">
-<h2><strong>Contenido</strong></h2>
-<div id="tema-0-introducción" class="section level3">
-<h3>Tema 0 : Introducción</h3>
+<pre class="r"><code>library(tidyverse)
+library(modelr)</code></pre>
+<div id="ejercicio-1" class="section level2">
+<h2>Ejercicio 1</h2>
+<p>Utilizando la base de datos <code>diamonds</code>, visualiza la
+relación entre los siguientes pares de variables:</p>
 <ul>
-<li><a href="./tema0/tema0.html">Diapositivas</a></li>
+<li><code>cut</code> y <code>price</code></li>
+<li><code>color</code> y <code>price</code></li>
+<li><code>clarity</code> y <code>price</code></li>
 </ul>
-</div>
-<div id="tema-1-programación-en-r" class="section level3">
-<h3>Tema 1 : Programación en R</h3>
-<ul>
-<li><a href="./tema1/tema1.html">Diapositivas</a></li>
-</ul>
-</div>
-<div id="tema-2-análisis-exploratorio-de-los-datos" class="section level3">
-<h3>Tema 2 : Análisis Exploratorio de los Datos</h3>
-<ul>
-<li>2.1: Visualización de datos
-<ul>
-<li><a href="./tema2/tema2-1.html">Diapositivas</a></li>
-</ul></li>
-<li>2.2: Transformación de datos
-<ul>
-<li><a href="./tema2/tema2-2.html">Diapositivas</a></li>
-</ul></li>
-<li>2.3: Análisis Exploratorio de datos
-<ul>
-<li><a href="./tema2/tema2-3.html">Diapositivas</a></li>
-</ul></li>
-</ul>
-</div>
-<div id="tema-3-data-wrangling" class="section level3">
-<h3>Tema 3 : Data Wrangling</h3>
-<ul>
-<li>3.1: Importación de datos
-<ul>
-<li><a href="./tema3/tema3-1.html">Diapositivas</a></li>
-</ul></li>
-<li>3.2: Organización de datos
-<ul>
-<li><a href="./tema3/tema3-2.html">Diapositivas</a></li>
-</ul></li>
-<li>3.3: Transformación de datos
-<ul>
-<li><a href="./tema3/tema3-3.html">Diapositivas</a></li>
-</ul></li>
-</ul>
-</div>
-<div id="tema-4-modelización" class="section level3">
-<h3>Tema 4 : Modelización</h3>
-<ul>
-<li><a href="./tema4/tema4.html">Diapositivas</a></li>
-</ul>
+<p>¿Encuentras un patrón atípico?</p>
+<p><strong>Pista</strong>: el color de menor calidad para un diamante es
+J (ligeramente amarillo), la peor claridad es I1 y el peor corte es
+Fair.</p>
+<div id="solución" class="section level3">
+<h3>Solución</h3>
 </div>
 </div>
-<div id="laboratorios" class="section level2">
-<h2><strong>Laboratorios</strong></h2>
-<div id="lab-01---programación-en-r" class="section level3">
-<h3>Lab 01 - Programación en R</h3>
-<ul>
-<li><a href="./labs/lab1.html">Ejercicios</a></li>
-</ul>
-</div>
-<div id="lab-02---visualización" class="section level3">
-<h3>Lab 02 - Visualización</h3>
-<ul>
-<li><a href="./labs/lab2.html">Ejercicios</a></li>
-</ul>
-</div>
-<div id="lab-03---transformación" class="section level3">
-<h3>Lab 03 - Transformación</h3>
-<ul>
-<li><a href="./labs/lab3.html">Ejercicios</a></li>
-</ul>
-</div>
-<div id="lab-04---importación" class="section level3">
-<h3>Lab 04 - Importación</h3>
-<ul>
-<li><a href="./labs/lab4.html">Ejercicios</a></li>
-</ul>
-</div>
-<div id="lab-05---data-wrangling" class="section level3">
-<h3>Lab 05 - Data Wrangling</h3>
-<ul>
-<li><a href="./labs/lab5.html">Ejercicios</a></li>
-</ul>
-</div>
-<div id="lab-06---strings-factores-y-fechas" class="section level3">
-<h3>Lab 06 - Strings, Factores y Fechas</h3>
-<ul>
-<li><a href="./labs/lab6.html">Ejercicios</a></li>
-</ul>
-</div>
-<div id="lab-07---modelos" class="section level3">
-<h3>Lab 07 - Modelos</h3>
-<ul>
-<li><a href="./labs/lab7.html">Ejercicios</a></li>
-</ul>
+<div id="ejercicio-2" class="section level2">
+<h2>Ejercicio 2</h2>
+<p>Ajusta un modelo lineal donde la variable predictora sea
+<code>carat</code> (el peso de los diamantes ) y la variable dependiente
+sea <code>price</code>. Obtén el valor de los coeficientes e
+interprétalos. ¿Qué conclusión extraes?</p>
+<div id="solución-1" class="section level3">
+<h3>Solución</h3>
 </div>
 </div>
-<div id="exámenes" class="section level2">
-<h2><strong>Exámenes</strong></h2>
-<div id="primer-parcial" class="section level3">
-<h3>Primer Parcial</h3>
-<ul>
-<li><a href="./exams/exam-01_sol.html">Solución</a></li>
-</ul>
+<div id="ejercicio-3" class="section level2">
+<h2>Ejercicio 3</h2>
+<p>Visualiza las predicciones del modelo anterior, así como los
+residuos. Extrae conclusiones.</p>
+<div id="solución-2" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-4" class="section level2">
+<h2>Ejercicio 4</h2>
+<p>Crea un nuevo conjunto de datos llamado <code>diamonds2</code> donde
+elimines todos los diamantes de carat mayor que 2.5. Añade dos variables
+a este conjunto de datos llamandas <code>lcarat</code> y
+<code>lprice</code> que correspondan respectivamente a logaritmo en base
+dos de <code>carat</code> y <code>price</code>.</p>
+<div id="solución-3" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-5" class="section level2">
+<h2>Ejercicio 5</h2>
+<p>Utilizando los datos creados en el ejercicio anterior, ajusta un
+modelo lineal donde la variable predictora sea <code>lcarat</code> y la
+variable dependiente sea <code>lprice</code>. Obtén el valor de los
+coeficientes e interprétalos. Según este modelo, que le sucede al precio
+de un diamante si multiplico por dos su <code>carat</code>.</p>
+<div id="solución-4" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-6" class="section level2">
+<h2>Ejercicio 6</h2>
+<p>Visualiza las predicciones del modelo anterior, así como los
+residuos. Extrae conclusiones. ¿Se ajusta este modelo mejor que el
+anterior a los datos?</p>
+<div id="solución-5" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-7" class="section level2">
+<h2>Ejercicio 7</h2>
+<p>Utilizando la base de datos <code>diamonds2</code>, visualiza la
+relación entre las siguientes variables y el residuo calculado en el
+ejercicio anterior. * <code>cut</code> * <code>color</code> *
+<code>clarity</code></p>
+<p>¿Qué conclusión extraes?</p>
+<div id="solución-6" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-8" class="section level2">
+<h2>Ejercicio 8</h2>
+<p>Explora los datos <code>sim3</code> de <code>modelr</code>. ¿De qué
+tipo son las variables <code>x1</code> y <code>x2</code>? ¿Y la
+<code>y</code>? Ajusta un modelo lineal con variable respuesta
+<code>y</code> y predictores <code>x1</code> y <code>x2</code> y
+visualiza sus predicciones.</p>
+<p>Interpreta los coeficientes de este modelo.</p>
+<div id="solución-7" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-9" class="section level2">
+<h2>Ejercicio 9</h2>
+<p>Con los datos anteriores, ajusta el siguiente modelo</p>
+<p><span class="math display">\[
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_{12} x_1 x_2
+\]</span></p>
+<p>en R este modelo se corresponde con la fórmula
+<code>y ~ x1 * x2</code>. Visualiza las predicciones del modelo, e
+interpreta sus coeficientes.</p>
+<div id="solución-8" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-10" class="section level2">
+<h2>Ejercicio 10</h2>
+<p>Hasta ahora hemos trabajado únicamente con modelos en los que la
+variable respuesta es cuantitativa. Existen modelos análogos que se
+pueden utilizar para casos en los que la variable respuesta es
+cualitativa. Uno de estos modelos es la regresión logística. No
+explicaremos el funcionamiento de la regresión logística, pero vamos a
+aprender cómo se ajusta una regresión logística en R.</p>
+<p>Si nuestra variable respuesta <code>y</code> es cualitativa y
+tenemos, por ejemplo, dos predictores <code>x1</code> y <code>x2</code>,
+ajustamos una regresión logística como sigue:</p>
+<pre class="r"><code>log_reg &lt;- glm( y ~ x1 + x2, data = data, family = binomial(link=&#39;logit&#39;))</code></pre>
+<p>Vamos a utilizar una regresión logística para intentar predecir si
+los pasajeros del titanic sobrevivieron o no, utilizando como variables
+predictores por ejemplo el sexo, la edad, la clase de su ticket,
+etc.</p>
+<p>Primero instala la librería <code>titanic</code> y carga los
+datos:</p>
+<pre class="r"><code>library(titanic)
+data(&quot;titanic_train&quot;)</code></pre>
+<p>Selecciona las variables Survived, Age, Sex, Embarked, SibSp, Parch,
+Fare, Pclass. Convierte a variables de tipo factor aquellas que
+consideres que son factores. Además añade una variable id que indique el
+número de fila. Guarda esto en un nuevo data frame llamado
+<code>titanic</code>.</p>
+<p><strong>Pista:</strong> usa <code>?titanic_train</code> para ver qué
+significa cada variable.</p>
+<div id="solución-9" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-11" class="section level2">
+<h2>Ejercicio 11</h2>
+<p>Crea dos conjuntos de datos llamados <code>train</code> y
+<code>test</code>. El primero, debe contener observaciones (filas)
+seleccionadas al azar del dataframe titanic del ejercicio anterior. Su
+número de filas ha de ser el 70% del número de filas de titanic. El
+segundo conjunto de datos ha de contener todas las observaciones que
+están en el conjunto de datos titanic pero que no están en
+<code>train</code>.</p>
+<p><strong>Pista:</strong> usa la función <code>sample_frac()</code></p>
+<div id="solución-10" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-12" class="section level2">
+<h2>Ejercicio 12</h2>
+<p>Ajusta un modelo de regresión logística usando los datos
+<code>train</code> donde la variable respuesta sea <code>Survived</code>
+y la variable predictora sea <code>Sex</code>.</p>
+<div id="solución-11" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-13" class="section level2">
+<h2>Ejercicio 13</h2>
+<p>La predicción de una regresión logística es una probabilidad
+correspondiente a la probabilidad de que la variable respuesta tome
+valor 1 (en nuestro caso que el pasajero correspondiente sobreviva)
+según el modelo.</p>
+<p>Calcula las predicciones del modelo anterior sobre los datos
+<code>test</code>. Construye una nueva variable que tome valor 1 si la
+probabilidad predicha es mayor o igual a 0.5 y cero en caso
+contrario.</p>
+<p>Finalmente, calcula el procentaje de aciertos comparando la variable
+recién creada y la variable Survived.</p>
+<div id="solución-12" class="section level3">
+<h3>Solución</h3>
+</div>
+</div>
+<div id="ejercicio-14" class="section level2">
+<h2>Ejercicio 14</h2>
+<p>Intenta mejorar el model anterior añadiendo más variables. ¿Qué
+variable crees que tiene más poder predictivo?</p>
+<div id="solución-13" class="section level3">
+<h3>Solución</h3>
 </div>
 </div>
 

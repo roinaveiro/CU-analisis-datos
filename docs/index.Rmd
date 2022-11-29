@@ -78,6 +78,9 @@ Esta es la página del curso de Análisis de Datos creado por
 ### Lab 06 - Strings, Factores y Fechas
   - [Ejercicios](./labs/lab6.html)
   
+### Lab 07 - Modelos
+  - [Ejercicios](./labs/lab7.html)
+  
 ## **Exámenes**
 
 ### Primer Parcial
