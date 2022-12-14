@@ -1,0 +1,54 @@
+---
+title: "Segundo Parcial - Modelo A"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+## Ejercicio 1 (2 pts)
+
+Para este ejericio y el siguiente trabajaremos con las bases de datos presentes en los siguientes ficheros:
+
+* `patients_data.csv`: es un conjunto de datos donde cada observación corresponde a un paciente de un hospital. Contiene tres variables, `id` es un identificador único de los pacientes, `sex` corresponde al sexo de los pacientes y `age` corresponde a la edad de los pacientes.
+
+* `labs_data.csv`: para ciertos pacientes, contiene información acerca del resultado de un análisis en el que se mide la cantidad de un compuesto (en miligramos) en sangre. Cada observación es un paciente. Contiene dos variables, `id` es el identificador de los pacientes y `measurement` es el resultado del análisis.
+
+Carga los datos en R responde a las siguientes preguntas:
+
+* ¿Cuál es la edad media de los pacientes?
+
+* ¿Cuántos pacientes en la segunda base de datos tienen más de 10 miligramos del compuesto en sangre?
+
+### Solución
+
+
+## Ejercicio 2 (3 pts)
+
+Usando las dos bases de datos del ejercicio anterior, responde a las siguientes preguntas.
+
+* Crea una base de datos que contenga el `id`, `sex` y `age` de los pacientes a los que NO se les ha hecho el análisis. Determina cuántas mujeres hay entre estos pacientes.
+
+* Para los pacientes que SÍ tienen resultados del análisis ¿cuál es la mediana de cantidad de compuesto en sangre de aquellos mayores de 70 años?
+
+### Solución
+
+## Ejercicio 3 (5 pts)
+
+Los datos presentes en el siguiente link contienen información acerca de la evolución del desempleo en EEUU desde 1948 hasta hoy. La base de datos tiene dos variables `DATE` la fecha en formato año, mes día y `UNRATE`, la tasa de desempleo. Responde a las siguientes cuestiones.
+
+```{r}
+link <- "https://fred.stlouisfed.org/graph/fredgraph.csv?bgcolor=%23e1e9f0&chart_type=line&drp=0&fo=open%20sans&graph_bgcolor=%23ffffff&height=450&mode=fred&recession_bars=on&txtcolor=%23444444&ts=12&tts=12&width=1168&nt=0&thu=0&trc=0&show_legend=yes&show_axis_titles=yes&show_tooltip=yes&id=UNRATE&scale=left&cosd=1948-01-01&coed=2022-11-01&line_color=%234572a7&link_values=false&line_style=solid&mark_type=none&mw=3&lw=2&ost=-99999&oet=99999&mma=0&fml=a&fq=Monthly&fam=avg&fgst=lin&fgsnd=2020-02-01&line_index=1&transformation=lin&vintage_date=2022-12-09&revision_date=2022-12-09&nd=1948-01-01"
+```
+
+* Descarga los datos e impórtalos a R.
+
+* Representa gráficamente la evolución del desempleo desde el año 2020 en adelante. ¿Cómo afectó la pandemia de COVID a la tasa de desempleo?
+
+* Añade una nueva columna a la base de datos que se llame `mes` y contenga el mes de cada observación con etiquetas (es decir, Enero aparecerá como Jan, Febrero con Feb, etc.)
+
+* Utilizando únicamente los datos posteriores al año 2014, calcula el desempleo **medio**.  Crea un gráfico de barras cuyo eje x corresponda a la variable `mes` y el eje y contenga el desempleo medio. ¿Qué mes tiene mayor tasa de desempleo media? ¿Sabrías explicar por qué?
+
+### Solución
