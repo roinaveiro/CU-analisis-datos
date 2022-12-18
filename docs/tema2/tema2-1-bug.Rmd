@@ -516,7 +516,6 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
     - `filas ~ columnas`
     - `.` para evitar una de ellas
 
---
 
 - `facet_wrap()`: 1d 
     - fijar escalas con `scales = ` ("free_x", "free_y", "free")
@@ -565,7 +564,6 @@ El color debe reflejar el continente.
     - *número de cigarros diarios* es ?
     - *distancia* es ?
 
---
 
 - **Variables categóricas**, a su vez incluyen **ordinales** si existe un orden natural
 entre sus niveles o **no ordinales**
