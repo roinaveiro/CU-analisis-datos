@@ -30,7 +30,7 @@ Esta es la página del curso de Análisis de Datos creado por
 ## **Contenido**
 
 ### Tema 0 : Introducción
-  - [Diapositivas](./tema0/tema0.html)
+  - [Diapositivas](./tema0/tema0-bug.html)
   
 ### Tema 1 : Programación en R
   - [Diapositivas](./tema1/tema1.html)
