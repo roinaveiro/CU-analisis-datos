@@ -33,11 +33,11 @@ Esta es la página del curso de Análisis de Datos creado por
   - [Diapositivas](./tema0/tema0-bug.html)
   
 ### Tema 1 : Programación en R
-  - [Diapositivas](./tema1/tema1.html)
+  - [Diapositivas](./tema1/tema1-bug.html)
   
 ### Tema 2 : Análisis Exploratorio de los Datos
 - 2.1: Visualización de datos
-  - [Diapositivas](./tema2/tema2-1.html)
+  - [Diapositivas](./tema2/tema2-1-bug.html)
     
 - 2.2: Transformación de datos
   - [Diapositivas](./tema2/tema2-2.html)

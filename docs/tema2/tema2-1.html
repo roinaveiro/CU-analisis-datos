@@ -4,7 +4,7 @@
     <title>Tema 2.1</title>
     <meta charset="utf-8" />
     <meta name="author" content="Roi Naveiro" />
-    <script src="libs/header-attrs-2.14/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.17/header-attrs.js"></script>
     <link rel="stylesheet" href="ds_slides.css" type="text/css" />
   </head>
   <body>
@@ -45,18 +45,13 @@ class: center, middle, inverse, title-slide
 
 Queremos analizar los datos de forma **reproducible**
 
-.pull-left[
-![](img/tidyverse.png)
-]
+&lt;img src="img/tidyverse.png" width="70%" style="display: block; margin: auto auto auto 0;" /&gt;
 
-.pull-right[
-.center[
 [tidyverse.org](https://www.tidyverse.org/)
-]
+
 
 - Tidyverse es una colección de paquetes de R para ciencia de datos
 - Todos los paquetes comparten una filosofía y una gramática comunes
-]
 
 
 ---
@@ -544,7 +539,7 @@ ggplot(gapminder67,
      scale_x_log10()  # convert to log scale
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-16-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-17-1.png" angle=90 style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -562,7 +557,7 @@ ggplot(gapminder67,
      scale_x_log10()  # convert to log scale
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-17-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-18-1.png" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -579,7 +574,7 @@ gapminder67 &lt;- gapminder %&gt;% filter(year == "1967")
      scale_x_log10()  
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-18-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-19-1.png" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -671,7 +666,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
      geom_point() 
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-24-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-25-1.png" angle=90 style="display: block; margin: auto;" /&gt;
 
 ¿Cómo describirías la relación entre pib per capita y esperanza de vida?
 
@@ -684,7 +679,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
 *    scale_x_log10()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-25-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-26-1.png" angle=90 style="display: block; margin: auto;" /&gt;
 
 ¿Cómo describirías la relación entre pib per capita y esperanza de vida?
 
@@ -731,7 +726,7 @@ una variable extra
      scale_x_log10()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-26-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-27-1.png" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 ## Representamos el continente
@@ -744,7 +739,7 @@ una variable extra
      scale_x_log10()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-27-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-28-1.png" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 ## Representamos el continente y la población
@@ -757,7 +752,7 @@ una variable extra
      scale_x_log10()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-28-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-29-1.png" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 ## Representamos el continente y la población
@@ -770,7 +765,7 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap, y = lifeExp, color = continent,
      scale_x_log10()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-29-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-30-1.png" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 ## Resumen
@@ -814,7 +809,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 * facet_grid(. ~ continent)
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-30-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -832,7 +827,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 * facet_grid(continent ~ .)
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-31-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -850,7 +845,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 * facet_wrap(continent ~ .)
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-32-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -868,7 +863,7 @@ ggplot(data = gapminder67, aes(x = gdpPercap, y = lifeExp)) +
 * facet_wrap(continent ~ ., scales = "free_x")
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-33-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-34-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 # Faceting - Resumen
@@ -1058,7 +1053,7 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap)) +
 *    geom_histogram(binwidth = 1000)
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-35-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-36-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1071,7 +1066,7 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap)) +
 *    geom_histogram(bins = 100)
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-36-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-37-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1084,7 +1079,7 @@ ggplot(gapminder67, mapping = aes(x = gdpPercap)) +
 *    geom_density()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-37-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-38-1.png" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -1102,7 +1097,7 @@ ggplot(gapminder67, mapping = aes(x = continent)) +
 * geom_bar()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-38-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-39-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle
@@ -1119,7 +1114,7 @@ ggplot(gapminder67, mapping = aes(x = continent, y = gdpPercap)) +
 * geom_boxplot()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-39-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-40-1.png" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Visualización: datos bivariantes contínuo - categórico
@@ -1137,7 +1132,7 @@ ggplot(gapminder67, aes(x = gdpPercap, y = lifeExp) ) +
 *    geom_smooth()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-41-1.png" angle=90 style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-42-1.png" angle=90 style="display: block; margin: auto;" /&gt;
 
 ---
 ## Visualización: datos bivariantes categórico - categórico
@@ -1150,7 +1145,7 @@ ggplot(data = diamonds, mapping = aes(x = clarity, fill = cut)) +
 * geom_bar()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Visualización: datos bivariantes categórico - categórico
@@ -1164,7 +1159,7 @@ ggplot(data = diamonds, mapping = aes(x = clarity, fill = cut)) +
   labs(y = "proportion") 
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-44-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle
@@ -1195,7 +1190,7 @@ ggplot(data = diamonds) +
 * geom_bar(mapping = aes(x = cut))
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-44-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-45-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -1207,7 +1202,7 @@ ggplot(data = diamonds) +
 * geom_bar(mapping = aes(x = cut, y = stat(prop), group = 1) )
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-45-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-46-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -1227,7 +1222,7 @@ ggplot(data = diamonds) +
   )
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-46-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-47-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -1244,7 +1239,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = clarity) )
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-47-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-48-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 El apilamiento se realiza automáticamente con el ajuste de posición especificado a través de la variable
 `position`
@@ -1258,7 +1253,7 @@ ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) +
 * geom_bar(alpha = 1/5, position = "identity")
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-48-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-49-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Ajustes de posición - "fill"
@@ -1271,7 +1266,7 @@ ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) +
 * geom_bar(position = "fill")
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-49-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 ## Ajustes de posición - "dodge"
@@ -1284,7 +1279,7 @@ ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) +
 * geom_bar(position = "dodge")
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-51-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 
 ---
 class: center, middle
@@ -1305,7 +1300,7 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
   geom_boxplot()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-51-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-52-1.png" width="90%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right[
 
@@ -1315,7 +1310,7 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
 * coord_flip()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-52-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-53-1.png" width="90%" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -1334,7 +1329,7 @@ ggplot(nz, aes(long, lat, group = group)) +
   geom_polygon(fill = "white", colour = "black")
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-53-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-54-1.png" width="90%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right[
 
@@ -1344,7 +1339,7 @@ ggplot(nz, aes(long, lat, group = group)) +
 * coord_quickmap()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-54-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-55-1.png" width="90%" style="display: block; margin: auto;" /&gt;
 ]
 
 ---
@@ -1368,7 +1363,7 @@ bar &lt;- ggplot(data = diamonds) +
 *bar + coord_flip()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-55-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-56-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right[
 
@@ -1376,7 +1371,7 @@ bar &lt;- ggplot(data = diamonds) +
 *bar + coord_polar()
 ```
 
-&lt;img src="tema2-1_files/figure-html/unnamed-chunk-56-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="tema2-1_files/figure-html/unnamed-chunk-57-1.png" width="70%" style="display: block; margin: auto;" /&gt;
 ]
 ---
 ## Resumen
