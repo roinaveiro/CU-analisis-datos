@@ -1,0 +1,29 @@
+---
+title: "Análisis de Datos"
+author: "Roi Naveiro"
+date: ""
+output: 
+   xaringan::moon_reader
+---
+
+## Recursos Interesantes
+
+* [Análisis de datos acerca de la evolución de las tendencias musicales](https://towardsdatascience.com/billboard-hot-100-analytics-using-data-to-understand-the-shift-in-popular-music-in-the-last-60-ac3919d39b49)
+
+* [A year as told by FitBit](https://livefreeordichotomize.com/2017/12/27/a-year-as-told-by-fitbit/)
+
+* [Charla TED](https://www.youtube.com/watch?v=hVimVzgtD6w)
+
+* [RMarkDown](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+---
+
+## Bibliografía
+
+* [Hands-On Programming with R](https://rstudio-education.github.io/hopr/), Grolemund (2014)
+
+* [R for Data Science](https://r4ds.had.co.nz/), Wickham and Grolemund (2016)
+
+* [Data Visualization, A practical introduction](https://socviz.co/), Healy (2018)
+
+* [Data Science Specialization](https://github.com/DataScienceSpecialization/courses), Johns Hopkins University, Coursera
+
