@@ -91,4 +91,9 @@ Esta es la página del curso de Análisis de Datos creado por
   
 ### Segundo Parcial
   - [Solución](./exams/exam-02_sol.html)
+  
+### Final 
+  - [Solución](./exams/sol-exam-final.html)
+   
+   
    
