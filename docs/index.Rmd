@@ -84,16 +84,4 @@ Esta es la página del curso de Análisis de Datos creado por
 ### Lab 07 - Modelos
   - [Ejercicios](./labs/lab7.html)
   
-## **Exámenes**
-
-### Primer Parcial
-  - [Solución](./exams/exam-01_sol.html)
-  
-### Segundo Parcial
-  - [Solución](./exams/exam-02_sol.html)
-  
-### Final 
-  - [Solución](./exams/sol-exam-final.html)
-   
-   
    
